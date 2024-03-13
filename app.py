@@ -1,9 +1,12 @@
 from flask import Flask
 app = Flask(__name__)
 
-@app.route('/')
+def readFile(path):
+    return open(path).read()
+
+@app.route("/")
 def index():
-    return "<h1>Test</h1>"
+    return readFile("views/index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
