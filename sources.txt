@@ -1,0 +1,5 @@
+Afbeeldingen:
+https://unsplash.com/
+
+SQL:
+https://www.sqlite.org/docs.html
