@@ -8,5 +8,9 @@ con = sqlite3.connect("database.db")
 def index():
     return render_template("index.html")
 
+@app.route("/inloggen")
+def inloggen():
+    return render_template("login.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
