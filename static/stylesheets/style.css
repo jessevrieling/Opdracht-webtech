@@ -10,10 +10,18 @@ body {
 .navigationBar {
     position: fixed;
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
     width: 100vw;
     height: 7.5vh;
     color: gray;
     background-color: white;
+}
+
+.navigationBar>p {
+    margin-left: 1vw;
+    margin-right: 1vw;
+    cursor: pointer;
 }
 
 .heroImage {
@@ -28,9 +36,26 @@ body {
 .heroImageContent {
     color: white;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: baseline;
     margin-left: 30vh;
-    width: 35vw;
+    width: 25vw;
     height: 40vh;
-    background-color: red;
+}
+
+.heroImageContent>* {
+    margin-top: 5vh;
+}
+
+.heroImageContent>p {
+    font-size: 20px;
+}
+
+#bookingButton {
+    cursor: pointer;
+    width: 10vw;
+    height: 5vh;
+    color: white;
+    background-color: #008CFF;
+    border: 1px solid white;
 }
