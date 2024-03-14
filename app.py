@@ -4,7 +4,7 @@ import sqlite3
 app = Flask(__name__)
 con = sqlite3.connect("database.db")
 
-@app.route("/")
+@app.route("/", methods=["get"])
 def index():
     return render_template("index.html")
 
