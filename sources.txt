@@ -1,5 +1,6 @@
 Afbeeldingen:
 https://unsplash.com/
+https://www.freeimages.com/
 
-SQL:
+sqlite documentatie:
 https://www.sqlite.org/docs.html
