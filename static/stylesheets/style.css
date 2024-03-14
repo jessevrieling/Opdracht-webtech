@@ -14,22 +14,27 @@ body {
     justify-content: flex-end;
     width: 100vw;
     height: 7.5vh;
-    color: gray;
     background-color: white;
 }
 
-.navigationBar>p {
+.navigationBar>a {
+    color: gray;
+    text-decoration: none;
     margin-left: 1vw;
     margin-right: 1vw;
     cursor: pointer;
 }
 
+.navigationBar>*:last-child {
+    margin-right: 5vw;
+}
+
 .heroImage {
     display: flex;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url("../images/heroImage.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../images/heroImage.jpg");
     background-size: cover;
 }
 
@@ -52,10 +57,33 @@ body {
 }
 
 #bookingButton {
-    cursor: pointer;
     width: 10vw;
     height: 5vh;
+    font-size: 15px;
+    background-color: #008cff;
+    border: none;
     color: white;
-    background-color: #008CFF;
-    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#bookingButton:hover {
+    background-color: #0056b3;
+}
+
+.information {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.element {
+    display: flex;
+    width: 65vw;
+    height: 50vh;
+    background-color: red;
+}
+
+.element {
+    margin-bottom: 40vh;
 }
