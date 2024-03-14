@@ -38,7 +38,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: baseline;
-    margin-left: 30vh;
+    margin-left: 20vw;
     width: 25vw;
     height: 40vh;
 }
