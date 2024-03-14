@@ -5,7 +5,8 @@
 
 body {
     font-family: "Roboto", sans-serif;
-    background-color: #f4f4f4;
+    background-image: url("../images/heroImage.jpg");
+    background-size: cover;
     margin: 0;
     padding: 0;
     display: flex;
@@ -40,8 +41,8 @@ body {
 
 .login-container input[type="submit"] {
     width: 100%;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #008cff;
+    color: #ffffff;
     border: none;
     padding: 10px;
     border-radius: 3px;
