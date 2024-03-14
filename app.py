@@ -1,15 +1,12 @@
-from flask import Flask
+from flask import Flask, render_template
 import sqlite3
 
 app = Flask(__name__)
 con = sqlite3.connect("database.db")
 
-def readFile(path):
-    return open(path).read()
-
 @app.route("/")
 def index():
-    return readFile("views/index.html")
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
