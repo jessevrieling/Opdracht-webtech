@@ -2,5 +2,8 @@ Afbeeldingen:
 https://unsplash.com/
 https://www.freeimages.com/
 
-sqlite documentatie:
+Fonts:
+https://fonts.google.com/
+
+SQLite documentatie:
 https://www.sqlite.org/docs.html

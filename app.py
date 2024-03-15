@@ -13,7 +13,6 @@ def inloggen():
     elif request.method == "POST":
         name = request.form.get("username")
         password = request.form.get("password")
-        print(name, password)
         return render_template("login.html")
 
 if __name__ == "__main__":
