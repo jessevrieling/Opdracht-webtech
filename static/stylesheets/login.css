@@ -68,32 +68,23 @@ a {
     color: #c99780;
 }
 
-
-.loginForm {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+.loginFormCenter {
+    height: calc(100vh - 5em);
     display: flex;
-    background-color: #ffffff;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginFormContainer {
+    display: flex;
+    background-color: white;
     border-radius: 5px;
-    padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 40vw;
+    padding: 40px;
 }
 
-.formContainer {
-    margin-right: 5vw;
-}
-
-.formContainer h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.formContainer input[type="text"],
-.formContainer input[type="password"] {
+input:not([type="submit"]) {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -102,34 +93,43 @@ a {
     box-sizing: border-box;
 }
 
-.formContainer input[type="submit"] {
+input[type="submit"] {
     width: 100%;
     background-color: #c99780;
-    color: #ffffff;
+    color: white;
     border: none;
     padding: 10px;
     border-radius: 3px;
     cursor: pointer;
 }
 
-.formContainer input[type="submit"]:hover {
+input[type="submit"]:hover {
     background-color: #b5836c;
 }
 
-.noAccount {
+form {
+    margin-right: 1.5em;
     display: flex;
     flex-direction: column;
 }
 
+.noAccount {
+    margin-left: 5em;
+}
+
+form>h2, .noAccount>h2 {
+    margin-bottom: 0.5em;
+}
+
 .noAccount>h2 {
-    margin-bottom: 1vh;
+    font-weight: 400;
 }
 
-.noAccount>* {
-    font-weight: 300;
-}
-
-#createAccountButton {
-    width: 50%;
-    justify-self: center;
+#createAccount {
+    border: none;
+    background-color: #c99780;
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
 }
