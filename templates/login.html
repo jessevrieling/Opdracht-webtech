@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/stylesheets/login.css">
-    <title>Bungalowpark Zee en Duin|Inloggen</title>
-</head>
-<body>
-    <div class="login-container">
-        <h2>Inloggen</h2>
-        <form action="/login" method="POST">
-            <input type="text" name="username" placeholder="Gebruikersnaam" required>
-            <input type="password" name="password" placeholder="Wachtwoord" required>
-            <input type="submit" value="Inloggen">
-        </form>
-    </div>
-</body>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">        
+        <link rel="stylesheet" href="static/stylesheets/login.css">
+        <title>Bungalowpark Zee en Duin|Inloggen</title>
+    </head>
+    
+    <body>
+        <div class="navigationBar">
+            <a href="/inloggen">
+                <p>Inloggen</p>
+            </a>
+            <a href="/boeken">
+                <p>Bungalow boeken</p>
+            </a>
+            <a href="mijnboekingen">
+                <p>Mijn boekingen</p>
+            </a>
+        </div>
+        <div class="loginForm">
+            <div class="formContainer">
+                <h2>Inloggen</h2>
+                <form action="/inloggen" method="POST">
+                    <input type="text" name="username" placeholder="Gebruikersnaam" required>
+                    <input type="password" name="password" placeholder="Wachtwoord" required>
+                    <input type="submit" value="Inloggen">
+                </form>
+            </div>
+            <div class="noAccount">
+                <h2>Nog geen account?</h2>
+                <p>Maak er vandaag nog een aan</p>
+                <button id="createAccountButton">Maak account aan</button>
+            </div>
+        </div>
+    </body>
 </html>

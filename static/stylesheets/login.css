@@ -4,33 +4,59 @@
 }
 
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Radio Canada", sans-serif;
     background-image: url("../images/heroImage.jpg");
     background-size: cover;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 
-.login-container {
+.navigationBar {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100vw;
+    height: 7.5vh;
+    background-color: white;
+}
+
+.navigationBar>a {
+    color: gray;
+    text-decoration: none;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    cursor: pointer;
+}
+
+.navigationBar>*:last-child {
+    margin-right: 5vw;
+}
+
+.loginForm {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
     background-color: #ffffff;
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 40vw;
 }
 
-.login-container h2 {
+.formContainer {
+    margin-right: 5vw;
+}
+
+.formContainer h2 {
     margin-top: 0;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.login-container input[type="text"],
-.login-container input[type="password"] {
+.formContainer input[type="text"],
+.formContainer input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -39,7 +65,7 @@ body {
     box-sizing: border-box;
 }
 
-.login-container input[type="submit"] {
+.formContainer input[type="submit"] {
     width: 100%;
     background-color: #008cff;
     color: #ffffff;
@@ -49,6 +75,24 @@ body {
     cursor: pointer;
 }
 
-.login-container input[type="submit"]:hover {
+.formContainer input[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+.noAccount {
+    display: flex;
+    flex-direction: column;
+}
+
+.noAccount>h2 {
+    margin-bottom: 1vh;
+}
+
+.noAccount>* {
+    font-weight: 300;
+}
+
+#createAccountButton {
+    width: 50%;
+    justify-self: center;
 }
