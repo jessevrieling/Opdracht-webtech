@@ -6,6 +6,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
         <link rel="stylesheet" href="static/stylesheets/login.css">
         <title>Bungalowpark Zee en Duin|Inloggen</title>
     </head>
@@ -30,25 +31,24 @@
                 </a>
             </div>
             <div class="navigationRight">
+                <a href="/registreren" class="navigationElement">
+                    <p>Registreren</p>
+                </a>
                 <a href="/inloggen" class="navigationElement">
                     <p>Inloggen</p>
                 </a>
             </div>
         </div>
-        <div class="loginFormCenter">
-            <div class="loginFormContainer">
-                <form>
-                    <h2>Inloggen</h2>
-                    <input type="text" placeholder="Gebruikersnaam">
-                    <input type="password" placeholder="Wachtwoord">
-                    <input type="submit" value="Inloggen">
-                </form>
-                <div class="noAccount">
-                    <h2>Geen account?</h2>
-                    <p>Een maken is eenvoudig</p>
-                    <button id="createAccount">Account maken</button>
-                </div>
-            </div>
+        <div class="loginFormContainer">
+            <form>
+                <h2>Inloggen</h2>
+                <input type="text" placeholder="Gebruikersnaam">
+                <input type="password" placeholder="Wachtwoord">
+                <input type="submit" value="Inloggen">
+                <a href="/registreren">
+                    <p>Nog geen account?</p>
+                </a>
+            </form>
         </div>
     </body>
 </html>

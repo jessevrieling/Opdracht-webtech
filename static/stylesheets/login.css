@@ -12,6 +12,7 @@ body {
 
 a {
     text-decoration: none;
+    color: #636363;
 }
 
 .navigationBar {
@@ -60,7 +61,6 @@ a {
 .navigationElement {
     padding: 0.75em;
     border-radius: 5px;
-    color: #636363;
 }
 
 .navigationElement:hover {
@@ -68,7 +68,7 @@ a {
     color: #c99780;
 }
 
-.loginFormCenter {
+.loginFormContainer {
     height: calc(100vh - 5em);
     display: flex;
     flex-direction: row;
@@ -76,12 +76,18 @@ a {
     align-items: center;
 }
 
-.loginFormContainer {
-    display: flex;
-    background-color: white;
+.loginFormContainer>form {
     border-radius: 5px;
+    padding: 10vh 5vw 10vh 5vw;
+    background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 40px;
+    width: 25em;
+}
+
+
+form>h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
 input:not([type="submit"]) {
@@ -95,6 +101,7 @@ input:not([type="submit"]) {
 
 input[type="submit"] {
     width: 100%;
+    margin-bottom: 20px;
     background-color: #c99780;
     color: white;
     border: none;
@@ -105,31 +112,4 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #b5836c;
-}
-
-form {
-    margin-right: 1.5em;
-    display: flex;
-    flex-direction: column;
-}
-
-.noAccount {
-    margin-left: 5em;
-}
-
-form>h2, .noAccount>h2 {
-    margin-bottom: 0.5em;
-}
-
-.noAccount>h2 {
-    font-weight: 400;
-}
-
-#createAccount {
-    border: none;
-    background-color: #c99780;
-    cursor: pointer;
-    color: white;
-    padding: 10px;
-    border-radius: 3px;
 }
