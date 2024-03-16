@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/stylesheets/boeken.css">
+    <title>Bungalowpark Zee en Duin|Mijn boekingen</title>
+</head>
+<body>
+    <div class="container">
+        <ul class="booking-list">
+            <li class="booking-item" onclick="showBookingDetails('booking1')">Boeking #1</li>
+            <li class="booking-item" onclick="showBookingDetails('booking2')">Boeking #2</li>
+            <!-- Voeg meer boekingen hier toe als dat nodig is -->
+        </ul>
+        <div class="booking-details" id="booking1-details">
+            <h2>Boeking #1</h2>
+            <p><strong>Datum:</strong> 14 maart 2024</p>
+            <p><strong>Bungalow:</strong> Bungalow 1</p>
+            <p><strong>Duur:</strong> 7 nachten</p>
+            <p><strong>Totaalprijs:</strong> €700</p>
+            <button class="close-btn" onclick="hideBookingDetails()">Sluiten</button>
+        </div>
+        <div class="booking-details" id="booking2-details">
+            <h2>Boeking #2</h2>
+            <p><strong>Datum:</strong> 21 april 2024</p>
+            <p><strong>Bungalow:</strong> Bungalow 3</p>
+            <p><strong>Duur:</strong> 5 nachten</p>
+            <p><strong>Totaalprijs:</strong> €500</p>
+            <button class="close-btn" onclick="hideBookingDetails()">Sluiten</button>
+        </div>
+        <!-- Voeg meer boekingsgegevens hier toe als dat nodig is -->
+    </div>
+
+    <script>
+        function showBookingDetails(bookingId) {
+            var details = document.getElementById(bookingId + "-details");
+            var items = document.querySelectorAll('.booking-details');
+            items.forEach(function(item) {
+                item.classList.remove('active');
+            });
+            details.classList.add("active");
+        }
+
+        function hideBookingDetails() {
+            var details = document.querySelector(".booking-details.active");
+            details.classList.remove("active");
+        }
+    </script>
+</body>
+</html>

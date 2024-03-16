@@ -15,5 +15,10 @@ def inloggen():
         password = request.form.get("password")
         return render_template("login.html")
 
+@app.route("/boekingen")
+def boekingen():
+    return render_template("boeken.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
