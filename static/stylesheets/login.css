@@ -82,8 +82,8 @@ a {
 
 .loginFormContainer>form {
     border-radius: 5px;
-    padding: 10vh 5vw 10vh 5vw;
-    background-color: white;
+    padding: 5vh 2vw 5vh 2vw;
+    background-color: rgb(255, 255, 255);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 25em;
 }
