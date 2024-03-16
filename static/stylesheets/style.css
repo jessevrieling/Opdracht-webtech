@@ -5,85 +5,104 @@
 
 body {
     font-family: "Radio Canada", sans-serif;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/backgroundImage.jpg");
+    background-size: cover;
+}
+
+a {
+    text-decoration: none;
 }
 
 .navigationBar {
-    position: fixed;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    width: 100vw;
-    height: 7.5vh;
+    width: 100%;
+    height: 5em;
     background-color: white;
+    box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.3);
 }
 
-.navigationBar>a {
-    color: gray;
-    text-decoration: none;
-    margin-left: 1vw;
-    margin-right: 1vw;
+.navigationLeft {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    margin-left: 5em;
+}
+
+.navigationLeft>a>h2 {
     cursor: pointer;
+    font-weight: 400;
+    color: #c99780;
+    border-radius: 5px;
+    margin-right: 1vw;
 }
 
-.navigationBar>*:last-child {
-    margin-right: 5vw;
+.navigationMiddle {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.navigationMiddle>:not(:first-child):not(:last-child) {
+    margin-right: 2.5vw;
+    margin-left: 2.5vw;
+}
+
+.navigationRight {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    margin-right: 5em;
+}
+
+.navigationElement {
+    padding: 0.75em;
+    border-radius: 5px;
+    color: #636363;
+}
+
+.navigationElement:hover {
+    background-color: #f5f5f5;
+    color: #c99780;
 }
 
 .heroImage {
     display: flex;
     align-items: center;
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/heroImage.jpg");
-    background-size: cover;
+    height: calc(100vh - 5em);
 }
 
 .heroImageContent {
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
     margin-left: 20vw;
-    width: 25vw;
-    height: 40vh;
+    width: 35em;
 }
 
-.heroImageContent>* {
-    margin-top: 5vh;
+.heroImageContent>*:not(:last-child) {
+    margin-bottom: 2.5vh;
 }
 
-.heroImageContent>p {
-    font-size: 20px;
+.heroImageContent>h2 {
+    font-weight: 400;
 }
 
 #bookingButton {
-    width: 10vw;
-    height: 5vh;
+    padding: 1em;
+    width: 12.5vw;
     font-size: 15px;
-    background-color: #008cff;
+    background-color: #c99780;
     border: none;
-    color: white;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
 }
 
+#bookingButton>a {
+    color: white;
+}
+
 #bookingButton:hover {
-    background-color: #0056b3;
-}
-
-.information {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.element {
-    display: flex;
-    width: 65vw;
-    height: 50vh;
-    background-color: red;
-}
-
-.element {
-    margin-bottom: 40vh;
+    background-color: #b5836c;
 }

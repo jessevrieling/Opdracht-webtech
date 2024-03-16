@@ -1,9 +1,9 @@
 Afbeeldingen:
-https://unsplash.com/
-https://www.freeimages.com/
+	Achtergrond:
+	https://unsplash.com/photos/aerial-photo-of-house-near-calm-body-of-water-6_8nhHo4fDc
 
-Fonts:
-https://fonts.google.com/
+	Logo:
+	https://www.freepik.com/premium-vector/sand-logo-sand-dune-beach-icon-desert-abstract-pattern-sign-wavy-lines_36815694.htm
 
-SQLite documentatie:
-https://www.sqlite.org/docs.html
+Lettertype:
+https://fonts.google.com/specimen/Radio+Canada

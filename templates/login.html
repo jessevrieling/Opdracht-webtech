@@ -6,36 +6,49 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
         <link rel="stylesheet" href="static/stylesheets/login.css">
         <title>Bungalowpark Zee en Duin|Inloggen</title>
     </head>
     
     <body>
         <div class="navigationBar">
-            <a href="/inloggen">
-                <p>Inloggen</p>
-            </a>
-            <a href="/boeken">
-                <p>Bungalow boeken</p>
-            </a>
-            <a href="mijnboekingen">
-                <p>Mijn boekingen</p>
-            </a>
+            <div class="navigationLeft">
+                <a href="/">
+                    <h2>Park zee en duin</h2>
+                </a>
+                <img src="../static/images/logo.png" width="12.5%" height="12.5%">
+            </div>
+            <div class="navigationMiddle">
+                <a href="/huisjes" class="navigationElement">
+                    <p>Huisjes</p>
+                </a>
+                <a href="/contact" class="navigationElement">
+                    <p>Contact</p>
+                </a>
+                <a href="mijnboekingen" class="navigationElement">
+                    <p>Mijn boekingen</p>
+                </a>
+            </div>
+            <div class="navigationRight">
+                <a href="/registreren" class="navigationElement">
+                    <p>Registreren</p>
+                </a>
+                <a href="/inloggen" class="navigationElement">
+                    <p>Inloggen</p>
+                </a>
+            </div>
         </div>
-        <div class="loginForm">
-            <div class="formContainer">
+        <div class="loginFormContainer">
+            <form>
                 <h2>Inloggen</h2>
-                <form action="/inloggen" method="POST">
-                    <input type="text" name="username" placeholder="Gebruikersnaam" required>
-                    <input type="password" name="password" placeholder="Wachtwoord" required>
-                    <input type="submit" value="Inloggen">
-                </form>
-            </div>
-            <div class="noAccount">
-                <h2>Nog geen account?</h2>
-                <p>Maak er vandaag nog een aan</p>
-                <button id="createAccountButton">Maak account aan</button>
-            </div>
+                <input type="text" placeholder="Gebruikersnaam">
+                <input type="password" placeholder="Wachtwoord">
+                <input type="submit" value="Inloggen">
+                <a href="/registreren">
+                    <p>Nog geen account?</p>
+                </a>
+            </form>
         </div>
     </body>
 </html>
