@@ -19,6 +19,5 @@ def inloggen():
 def boekingen():
     return render_template("boeken.html")
 
-
 if __name__ == "__main__":
     app.run(debug=True)
