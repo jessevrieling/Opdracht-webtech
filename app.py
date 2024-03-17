@@ -15,7 +15,7 @@ def inloggen():
         password = request.form.get("password")
         return render_template("login.html")
 
-@app.route("/boekingen")
+@app.route("/boeken")
 def boekingen():
     return render_template("boeken.html")
 
