@@ -15,6 +15,14 @@ def inloggen():
         password = request.form.get("password")
         return render_template("login.html")
 
+@app.route("/registreren", methods=["GET"])
+def registreren():
+    return render_template("registreren.html")
+
+@app.route("/Gefeliciteerd!", methods=["GET"])
+def aangemeld():
+    return render_template("aangemeld.html")
+
 @app.route("/mijnboekingen")
 def boekingen():
     return render_template("boeken.html")

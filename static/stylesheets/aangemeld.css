@@ -94,18 +94,9 @@ form>h2 {
     margin-bottom: 20px;
 }
 
-input:not([type="submit"]) {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
-}
-
 input[type="submit"] {
     width: 100%;
-    margin-bottom: 20px;
+    margin-top: 5vh;
     background-color: #c99780;
     color: white;
     border: none;
