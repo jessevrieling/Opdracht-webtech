@@ -7,7 +7,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-        <link rel="stylesheet" href="static/stylesheets/style.css">
+        <link rel="stylesheet" href="static/stylesheets/contact.css">
         <title>Bungalowpark zee en duin</title>
     </head>
 
@@ -39,16 +39,15 @@
                 </a>
             </div>
         </div>
-        <div class="heroImage">
-            <div class="heroImageContent">
-                <h1>Bungalowpark zee en duin</h1>
-                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
-                <button id="bookingButton">
-                    <a href="boeken">
-                        Bungalow boeken
-                    </a>
-                </button>
-            </div>
+        <div class="container">
+            
+            <form class="contact-form" action="mailto:your-email@example.com" method="post" enctype="text/plain">
+                <h1>Contact formulier</h1>
+                <input type="text" name="name" placeholder="Naam" required>
+                <input type="text" name="email" placeholder="E-mail" required>
+                <textarea name="message" placeholder="Uw bericht." required></textarea>
+                <input type="submit" value="Versturen">
+            </form>
         </div>
     </body>
 </html>
