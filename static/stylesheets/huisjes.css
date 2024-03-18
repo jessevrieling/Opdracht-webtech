@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Radio Canada", sans-serif;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/backgroundImage.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: #636363;
+}
+
+.navigationBar {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5em;
+    background-color: white;
+    box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.navigationLeft {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    margin-left: 5em;
+}
+
+.navigationLeft>a>h2 {
+    cursor: pointer;
+    font-weight: 400;
+    color: #c99780;
+    border-radius: 5px;
+    margin-right: 1vw;
+}
+
+.navigationMiddle {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.navigationMiddle>:not(:first-child):not(:last-child) {
+    margin-right: 2.5vw;
+    margin-left: 2.5vw;
+}
+
+.navigationRight {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    margin-right: 5em;
+}
+
+.navigationRight>:last-child {
+    margin-left: 1vw;
+}
+
+.navigationElement {
+    padding: 0.75em;
+    border-radius: 5px;
+}
+
+.navigationElement:hover {
+    background-color: #f5f5f5;
+    color: #c99780;
+}
+
+.container {
+    width: 80vw;
+    margin: 15vh auto 5vh;
+}
+.house-card {
+    background-color: #ffffff;
+    border-radius: 2vw;
+    box-shadow: 0 0 2vw rgba(0, 0, 0, 0.1);
+    margin-bottom: 3vh;
+    overflow: hidden;
+    position: relative
+}
+.house-image {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+}
+.house-details {
+    padding: 2vh;
+}
+.house-title {
+    font-size: 5vh;
+    font-weight: bold;
+    margin: 0;
+}
+.house-price {
+    font-size: 2.5vh;
+    color: #007bff;
+    margin: 1vh 0;
+}
+.house-description {
+    margin: 2vh 0;
+}
+.book-now-button {
+    position: absolute;
+    bottom: 6vh;
+    right: 4vh;
+    background-color: #c99780;
+    color: #fff;
+    padding: 2vh 3vh;
+    font-size: 4vh;
+    border: none;
+    border-radius: 2vw;
+    cursor: pointer;
+}
+
+.book-now-button:hover {
+    background-color: #b5836c;
+}

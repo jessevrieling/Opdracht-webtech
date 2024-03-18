@@ -31,5 +31,9 @@ def boekingen():
 def contact():
     return render_template("contact.html")
 
+@app.route("/huisjes")
+def huisjes():
+    return render_template("huisjes.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
