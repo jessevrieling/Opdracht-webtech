@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
@@ -7,10 +7,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-        <link rel="stylesheet" href="static/stylesheets/contact.css">
-        <title>Bungalowpark zee en duin</title>
+        <link rel="stylesheet" href="static/stylesheets/login.css">
+        <title>Bungalowpark Zee en Duin|Inloggen</title>
     </head>
-
+    
     <body>
         <div class="navigationBar">
             <div class="navigationLeft">
@@ -39,14 +39,17 @@
                 </a>
             </div>
         </div>
-        <div class="container">
-            
-            <form class="contact-form" action="mailto:your-email@example.com" method="post" enctype="text/plain">
-                <h1>Contact formulier</h1>
-                <input type="text" name="name" placeholder="Naam" required>
-                <input type="text" name="email" placeholder="E-mail" required>
-                <textarea name="message" placeholder="Uw bericht." required></textarea>
-                <input type="submit" value="Versturen">
+        <div class="loginFormContainer">
+            <form>
+                <h2>Registreren</h2>
+                <input type="e-mail" placeholder="E-mail">
+                <input type="text" placeholder="Gebruikersnaam">
+                <input type="password" placeholder="Wachtwoord">
+                <input type="password" placeholder="Bevestig Wachtwoord">
+                <input type="submit" value="Account aanmaken">
+                <a href="">
+                    <p>Heeft u al een account?</p>
+                </a>
             </form>
         </div>
     </body>

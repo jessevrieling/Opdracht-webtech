@@ -12,58 +12,7 @@ body {
 
 a {
     text-decoration: none;
-}
-
-.container {
-    height: calc(100vh - 20em);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 20px;
-}
-
-.contact-form {
-    margin-top: 20px;
-}
-
-.contact-form input[type="text"],
-.contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-.contact-form textarea {
-    height: 150px;
-}
-
-.contact-form input[type="submit"] {
-    background-color: #c99780;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.contact-form input[type="submit"]:hover {
-    background-color: #b5836c;
+    color: #636363;
 }
 
 .navigationBar {
@@ -116,7 +65,6 @@ h1 {
 .navigationElement {
     padding: 0.75em;
     border-radius: 5px;
-    color: #636363;
 }
 
 .navigationElement:hover {
@@ -124,3 +72,48 @@ h1 {
     color: #c99780;
 }
 
+.loginFormContainer {
+    height: calc(100vh - 5em);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginFormContainer>form {
+    border-radius: 5px;
+    padding: 5vh 2vw 5vh 2vw;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 25em;
+}
+
+
+form>h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+input:not([type="submit"]) {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #c99780;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #b5836c;
+}
