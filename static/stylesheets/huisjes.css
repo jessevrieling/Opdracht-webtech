@@ -111,12 +111,12 @@ a {
 }
 .book-now-button {
     position: absolute;
-    bottom: 6vh;
+    bottom: 8vh;
     right: 6vh;
     background-color: #c99780;
     color: #fff;
     padding: 2vh 3vh;
-    font-size: 4vh;
+    font-size: 3vh;
     border: none;
     border-radius: 2vw;
     cursor: pointer;
