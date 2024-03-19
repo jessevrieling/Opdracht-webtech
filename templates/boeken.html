@@ -11,44 +11,25 @@
 </head>
 <body>
     <div class="container">
-        <ul class="booking-list">
-            <li class="booking-item" onclick="showBookingDetails('booking1')">Boeking #1</li>
-            <li class="booking-item" onclick="showBookingDetails('booking2')">Boeking #2</li>
-            <!-- Voeg meer boekingen hier toe als dat nodig is -->
-        </ul>
-        <div class="booking-details" id="booking1-details">
-            <h2>Boeking #1</h2>
-            <p><strong>Datum:</strong> 14 maart 2024</p>
-            <p><strong>Bungalow:</strong> Bungalow 1</p>
-            <p><strong>Duur:</strong> 7 nachten</p>
-            <p><strong>Totaalprijs:</strong> €700</p>
-            <button class="close-btn" onclick="hideBookingDetails()">Sluiten</button>
+        <div class="booked-house-card">
+            <img class="house-image" src="house1.jpg" alt="Geboekt huisje 1">
+            <div class="house-details">
+                <h2 class="house-title">Geboekt huisje 1</h2>
+                <p class="booking-info">Aankomstdatum: 25-03-2024</p>
+                <p class="booking-info">Vertrekdatum: 01-04-2024</p>
+                <button class="extend-booking-button">Verleng verblijf</button>
+            </div>
         </div>
-        <div class="booking-details" id="booking2-details">
-            <h2>Boeking #2</h2>
-            <p><strong>Datum:</strong> 21 april 2024</p>
-            <p><strong>Bungalow:</strong> Bungalow 3</p>
-            <p><strong>Duur:</strong> 5 nachten</p>
-            <p><strong>Totaalprijs:</strong> €500</p>
-            <button class="close-btn" onclick="hideBookingDetails()">Sluiten</button>
+        <div class="booked-house-card">
+            <img class="house-image" src="house2.jpg" alt="Geboekt huisje 2">
+            <div class="house-details">
+                <h2 class="house-title">Geboekt huisje 2</h2>
+                <p class="booking-info">Aankomstdatum: 30-03-2024</p>
+                <p class="booking-info">Vertrekdatum: 06-04-2024</p>
+                <button class="extend-booking-button">Verleng verblijf</button>
+            </div>
         </div>
-        <!-- Voeg meer boekingsgegevens hier toe als dat nodig is -->
+        <!-- Voeg hier meer geboekte huisjes toe indien nodig -->
     </div>
-
-    <script>
-        function showBookingDetails(bookingId) {
-            var details = document.getElementById(bookingId + "-details");
-            var items = document.querySelectorAll('.booking-details');
-            items.forEach(function(item) {
-                item.classList.remove('active');
-            });
-            details.classList.add("active");
-        }
-
-        function hideBookingDetails() {
-            var details = document.querySelector(".booking-details.active");
-            details.classList.remove("active");
-        }
-    </script>
 </body>
 </html>
