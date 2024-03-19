@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Radio Canada", sans-serif;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/backgroundImage.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: #636363;
+}
+
+.navigationBar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5em;
+    background-color: white;
+    box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.3);
+}
+
+.navigationLeft {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    margin-left: 5em;
+}
+
+.navigationLeft>a>h2 {
+    cursor: pointer;
+    font-weight: 400;
+    color: #c99780;
+    border-radius: 5px;
+    margin-right: 1vw;
+}
+
+.navigationMiddle {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.navigationMiddle>:not(:first-child):not(:last-child) {
+    margin-right: 2.5vw;
+    margin-left: 2.5vw;
+}
+
+.navigationRight {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    margin-right: 5em;
+}
+
+.navigationRight>:last-child {
+    margin-left: 1vw;
+}
+
+.navigationElement {
+    padding: 0.75em;
+    border-radius: 5px;
+}
+
+.navigationElement:hover {
+    background-color: #f5f5f5;
+    color: #c99780;
+}
+
+.loginFormContainer {
+    height: calc(100vh - 5em);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginFormContainer>form {
+    border-radius: 5px;
+    padding: 5vh 2vw 5vh 2vw;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 25em;
+}
+
+
+form>h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+input:not([type="submit"]) {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #c99780;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #b5836c;
+}

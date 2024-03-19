@@ -7,7 +7,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-        <link rel="stylesheet" href="static/stylesheets/login.css">
+        <link rel="stylesheet" href="static/stylesheets/wachtwoord.css">
         <title>Bungalowpark Zee en Duin|Inloggen</title>
     </head>
     
@@ -41,13 +41,10 @@
         </div>
         <div class="loginFormContainer">
             <form>
-                <h2>Inloggen</h2>
+                <h2>Nieuw wachtwoord aanvragen</h2>
                 <input type="text" placeholder="Gebruikersnaam">
-                <input type="password" placeholder="Wachtwoord">
-                <input type="submit" value="Inloggen">
-                <a href="/wachtwoord_vergeten">
-                    <p>Wachtwoord vergeten?</p>
-                </a>
+                <input type="password" placeholder="E-mail">
+                <input type="submit" value="Versturen">
                 <a href="/registreren">
                     <p>Nog geen account?</p>
                 </a>

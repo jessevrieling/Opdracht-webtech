@@ -31,5 +31,9 @@ def boekingen():
 def contact():
     return render_template("contact.html")
 
+@app.route("/wachtwoord_vergeten")
+def wachtwoord():
+    return render_template("wachtwoord.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
