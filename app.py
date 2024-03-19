@@ -31,6 +31,10 @@ def boekingen():
 def contact():
     return render_template("contact.html")
 
+@app.route("/huisjes")
+def huisjes():
+    return render_template("huisjes.html")
+
 @app.route("/wachtwoord_vergeten")
 def wachtwoord():
     return render_template("wachtwoord.html")
