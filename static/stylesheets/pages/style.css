@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Radio Canada", sans-serif;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../images/backgroundImage.jpg");
+    background-size: cover;
+}
+
+.heroImage {
+    display: flex;
+    align-items: center;
+    height: calc(100vh - 5em);
+}
+
+.heroImageContent {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20vw;
+    width: 35em;
+}
+
+.heroImageContent>*:not(:last-child) {
+    margin-bottom: 2.5vh;
+}
+
+.heroImageContent>h2 {
+    font-weight: 400;
+}
+
+#bookingButton {
+    padding: 1em;
+    width: 12.5vw;
+    font-size: 15px;
+    background-color: #c99780;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#bookingButton>a {
+    color: white;
+}
+
+#bookingButton:hover {
+    background-color: #b5836c;
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
@@ -7,10 +7,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-        <link rel="stylesheet" href="static/stylesheets/style.css">
-        <title>Bungalowpark zee en duin</title>
+        <link rel="stylesheet" href="static/stylesheets/login.css">
+        <title>Bungalowpark Zee en Duin|Inloggen</title>
     </head>
-
+    
     <body>
         <div class="navigationBar">
             <div class="navigationLeft">
@@ -39,16 +39,18 @@
                 </a>
             </div>
         </div>
-        <div class="heroImage">
-            <div class="heroImageContent">
-                <h1>Bungalowpark zee en duin</h1>
-                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
-                <button id="bookingButton">
-                    <a href="boeken">
-                        Bungalow boeken
-                    </a>
-                </button>
-            </div>
+        <div class="loginFormContainer">
+            <form>
+                <h2>Registreren</h2>
+                <input type="e-mail" placeholder="E-mail">
+                <input type="text" placeholder="Gebruikersnaam">
+                <input type="password" id="password" placeholder="Wachtwoord">
+                <input type="password" id="passwordConfirm" placeholder="Bevestig Wachtwoord">
+                <input type="submit" value="Account aanmaken">
+                <a href="">
+                    <p>Heeft u al een account?</p>
+                </a>
+            </form>
         </div>
     </body>
 </html>

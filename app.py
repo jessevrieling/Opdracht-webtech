@@ -6,12 +6,12 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def index():
-    return render_template("index.html")
+    return render_template("pages/index.html")
 
 @app.route("/inloggen", methods=["GET", "POST"])
 def inloggen():
     if request.method == "GET":
-        return render_template("login.html")
+        return render_template("pages/login.html")
     elif request.method == "POST":
         con = sqlite3.connect("database.db")
         cursor = con.cursor()
@@ -27,25 +27,25 @@ def inloggen():
         result = cursor.fetchone()
 
         if result[0] == 1:
-            return render_template("boeken.html")
+            return "<h1>Goed</h1"
         else:
             return "<h1>Fout</h1>"
 
 @app.route("/registreren", methods=["GET"])
 def registreren():
-    return render_template("registreren.html")
+    return render_template("pages/registreren.html")
 
 @app.route("/Gefeliciteerd!", methods=["GET"])
 def aangemeld():
-    return render_template("aangemeld.html")
+    return render_template("pages/aangemeld.html")
 
 @app.route("/mijnboekingen")
 def boekingen():
-    return render_template("boeken.html")
+    return render_template("pages/boeken.html")
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    return render_template("pages/contact.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
