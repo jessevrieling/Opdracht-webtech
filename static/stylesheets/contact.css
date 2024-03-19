@@ -50,6 +50,7 @@ h1 {
 
 .contact-form textarea {
     height: 150px;
+    resize: none;
 }
 
 .contact-form input[type="submit"] {
