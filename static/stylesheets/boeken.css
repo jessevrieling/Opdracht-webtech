@@ -87,6 +87,7 @@ a {
     margin-bottom: 3vh;
     overflow: hidden;
     position: relative;
+    padding: 5vh 2vw 5vh 2vw;
 }
 .house-image {
     width: 100%;
