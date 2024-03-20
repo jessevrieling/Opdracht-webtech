@@ -76,19 +76,24 @@ a {
     color: #c99780;
 }
 
+.house-card {
+    width: calc(33.33% - 4vw); /* 4vw is voor de marges tussen de huisjes */
+    margin-right: 4vw; /* Marge tussen de huisjes */
+    float: left; /* Zorgt ervoor dat de huisjes naast elkaar komen te staan */
+    clear: none; /* Reset clear om ervoor te zorgen dat er geen lege ruimte onderaan de rij is */
+    border-radius: 5px;
+    padding: 5vh 2vw 5vh 2vw;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 25em;
+}
+
 .container {
     width: 80vw;
     margin: 15vh auto 5vh;
+    overflow: hidden; /* Voorkomt dat de container hoogte krijgt van de floats binnenin */
 }
-.house-card {
-    background-color: #ffffff;
-    border-radius: 2vw;
-    box-shadow: 0 0 2vw rgba(0, 0, 0, 0.1);
-    margin-bottom: 3vh;
-    overflow: hidden;
-    position: relative
-}
-.house-image {
+    .house-image {
     width: 100%;
     height: 60vh;
     object-fit: cover;
@@ -110,9 +115,6 @@ a {
     margin: 2vh 0;
 }
 .book-now-button {
-    position: absolute;
-    bottom: 8vh;
-    right: 6vh;
     background-color: #c99780;
     color: #fff;
     padding: 2vh 3vh;
