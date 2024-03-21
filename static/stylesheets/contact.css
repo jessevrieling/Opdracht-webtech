@@ -15,17 +15,19 @@ a {
 }
 
 .container {
-    height: calc(100vh - 20em);
+    height: calc(100vh - 5em);
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #ffffff;
+}
+
+.container>form {
     border-radius: 5px;
+    padding: 5vh 2vw 5vh 2vw;
+    background-color: rgb(255, 255, 255);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 35em;
 }
 
 h1 {
