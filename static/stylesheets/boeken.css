@@ -82,7 +82,7 @@ a {
 }
 .booked-house-card {
     background-color: #ffffff;
-    border-radius: 2vw;
+    border-radius: 3px;
     box-shadow: 0 0 2vw rgba(0, 0, 0, 0.1);
     margin-bottom: 3vh;
     overflow: hidden;
@@ -115,7 +115,7 @@ a {
     padding: 2vh 3vh;
     font-size: 3vh;
     border: none;
-    border-radius: 2vw;
+    border-radius: 3px;
     cursor: pointer;
 }
 
