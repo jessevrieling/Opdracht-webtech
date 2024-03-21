@@ -91,12 +91,13 @@ a {
     width: 90vw;
     margin: 15vh auto 5vh;
     overflow: hidden; /* Voorkomt dat de container hoogte krijgt van de floats binnenin */
+    border-radius: 5px;
 }
 .house-image {
     width: 100%;
     height: 60vh;
     object-fit: cover;
-    border-radius: 3px;
+    border-radius: 5px;
 
 }
 .house-details {
