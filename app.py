@@ -31,9 +31,23 @@ def inloggen():
         else:
             return "<h1>Fout</h1>"
 
-@app.route("/registreren", methods=["GET"])
+@app.route("/registreren", methods=["GET", "POST"])
 def registreren():
-    return render_template("registreren.html")
+    if request.method == "GET":
+        return render_template("registreren.html")
+    elif request.method == "POST":
+        con = sqlite3.connect("database.db")
+        cursor = con.cursor()
+
+        name = request.form.get("username")
+        password = request.form.get("password")
+        
+        bytes = password.encode("utf-8")
+        salt = bcrypt.gensalt()
+        passwordHash = bcrypt.hashpw(bytes, salt)
+        query = f"SELECT COUNT(*) FROM users WHERE name=\"{name}\" AND password=\"{passwordHash}\""
+        cursor.execute(query)
+        result = cursor.fetchone()
 
 @app.route("/Gefeliciteerd!", methods=["GET"])
 def aangemeld():
