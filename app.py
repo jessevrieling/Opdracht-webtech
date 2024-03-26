@@ -47,6 +47,7 @@ def registreren():
         
             bytes = password.encode("utf-8")
             salt = bcrypt.gensalt()
+            
             passwordHash = str(bcrypt.hashpw(bytes, salt))
 
             query = f"INSERT INTO users (email, name, password) VALUES(\"{email}\", \"{name}\", \"{passwordHash}\")"
