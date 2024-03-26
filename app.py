@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import sqlite3
 import bcrypt
 
@@ -16,42 +16,53 @@ def inloggen():
         con = sqlite3.connect("database.db")
         cursor = con.cursor()
 
-        name = request.form.get("username")
-        password = request.form.get("password")
-        
-        bytes = password.encode("utf-8")
-        salt = bcrypt.gensalt()
-        passwordHash = bcrypt.hashpw(bytes, salt)
-        query = f"SELECT COUNT(*) FROM users WHERE name=\"{name}\" AND password=\"{passwordHash}\""
+        identifier = request.form.get("identifier")
+        plainPassword = request.form.get("password")
+        query = f"SELECT password FROM users WHERE name=\"{identifier}\" OR email=\"{identifier}\""
+
         cursor.execute(query)
         result = cursor.fetchone()
+        con.close()
+        
+        hashedPassword = result[0]
 
-        if result[0] == 1:
-            return "<h1>Goed</h1"
+        if bcrypt.checkpw(plainPassword.encode("utf-8"), hashedPassword.encode("utf-8")):
+            return "<h1>goed</h1>"
         else:
-            return "<h1>Fout</h1>"
+            return "<h1>fout</h1>"
 
 @app.route("/registreren", methods=["GET", "POST"])
 def registreren():
     if request.method == "GET":
         return render_template("registreren.html")
     elif request.method == "POST":
-        con = sqlite3.connect("database.db")
-        cursor = con.cursor()
-
-        name = request.form.get("username")
+        name = request.form.get("name")
+        email = request.form.get("email")
         password = request.form.get("password")
-        
-        bytes = password.encode("utf-8")
-        salt = bcrypt.gensalt()
-        passwordHash = bcrypt.hashpw(bytes, salt)
-        query = f"SELECT COUNT(*) FROM users WHERE name=\"{name}\" AND password=\"{passwordHash}\""
-        cursor.execute(query)
-        result = cursor.fetchone()
+        passwordConfirm = request.form.get("passwordConfirm")
 
-@app.route("/Gefeliciteerd!", methods=["GET"])
+        if password == passwordConfirm:
+            con = sqlite3.connect("database.db")
+            cursor = con.cursor()
+        
+            bytes = password.encode("utf-8")
+            salt = bcrypt.gensalt()
+            passwordHash = str(bcrypt.hashpw(bytes, salt))
+
+            query = f"INSERT INTO users (email, name, password) VALUES(\"{email}\", \"{name}\", \"{passwordHash}\")"
+            cursor.execute(query)
+            con.commit()
+            con.close()
+            return redirect("/Gefeliciteerd!")
+        else:
+            return "Wachtwoord komt niet overeen"
+
+@app.route("/Gefeliciteerd!", methods=["GET", "POST"])
 def aangemeld():
-    return render_template("aangemeld.html")
+    if request.method == "GET":
+        return render_template("aangemeld.html")
+    elif request.method == "POST":
+        return redirect("/")
 
 @app.route("/mijnboekingen")
 def boekingen():
