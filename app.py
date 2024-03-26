@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect
+from flask_bcrypt import Bcrypt
 import sqlite3
-import bcrypt
 
 app = Flask(__name__)
+hasher = Bcrypt()
 
 @app.route("/", methods=["GET"])
 def index():
@@ -18,18 +19,19 @@ def inloggen():
 
         identifier = request.form.get("identifier")
         plainPassword = request.form.get("password")
+        
         query = f"SELECT password FROM users WHERE name=\"{identifier}\" OR email=\"{identifier}\""
-
         cursor.execute(query)
         result = cursor.fetchone()
         con.close()
         
         hashedPassword = result[0]
 
-        if bcrypt.checkpw(plainPassword.encode("utf-8"), hashedPassword.encode("utf-8")):
+        if hasher.check_password_hash(hashedPassword, plainPassword):
             return "<h1>goed</h1>"
         else:
             return "<h1>fout</h1>"
+        
 
 @app.route("/registreren", methods=["GET", "POST"])
 def registreren():
@@ -44,11 +46,7 @@ def registreren():
         if password == passwordConfirm:
             con = sqlite3.connect("database.db")
             cursor = con.cursor()
-        
-            bytes = password.encode("utf-8")
-            salt = bcrypt.gensalt()
-            
-            passwordHash = str(bcrypt.hashpw(bytes, salt))
+            passwordHash = hasher.generate_password_hash(password).decode('utf-8')
 
             query = f"INSERT INTO users (email, name, password) VALUES(\"{email}\", \"{name}\", \"{passwordHash}\")"
             cursor.execute(query)
