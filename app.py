@@ -32,7 +32,6 @@ def inloggen():
         else:
             return "<h1>fout</h1>"
         
-
 @app.route("/registreren", methods=["GET", "POST"])
 def registreren():
     if request.method == "GET":
