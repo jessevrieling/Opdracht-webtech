@@ -105,7 +105,7 @@ input:not([type="submit"]) {
 
 input[type="submit"] {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     background-color: #c99780;
     color: white;
     border: none;
@@ -116,4 +116,9 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #b5836c;
+}
+
+#errorText {
+    color: #636363;
+    text-align: center;
 }
