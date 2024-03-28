@@ -1,1 +1,1 @@
-bcrypt
+pip install bcrypt
