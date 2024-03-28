@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/stylesheets/boekscherm.css">
+    <title>Bungalowpark Zee en Duin|Mijn boekingen</title>
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> <!-- jQuery UI CSS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> <!-- jQuery UI -->
+  <script>
+    
+    $(function() {
+        let startDate;
+        let endDate;
+
+        $("#arrivalDate, #departureDate").datepicker({
+            dateFormat: 'dd/mm/yy',
+            onSelect: function(date) {
+            if ($(this).attr("id") === "arrivalDate") {
+                startDate = new Date(date);
+            } else {
+                endDate = new Date(date);
+
+                $('.ui-datepicker-calendar td').each(function() {
+                const currentDate = new Date(parseInt($(this).attr('data-year')), parseInt($(this).attr('data-month')) + 1, parseInt($(this).text()));
+                if (currentDate >= startDate && currentDate <= endDate) {
+                    $(this).addClass('selected-range');
+                } else {
+                    $(this).removeClass('selected-range');
+                }
+                });
+            }}
+        });
+    });
+  </script>
+  
+</head>
+<body>
+
+    <div class="container">
+        <div class="booking-form">
+            <h2>Boek Nu</h2>
+            <form action="submit_booking.php" method="POST"> <!-- Actie en methode moeten worden aangepast aan jouw backend -->
+                <div class="form-group">
+                    <label for="arrivalDate">Aankomstdatum:</label>
+                    <input type="text" id="arrivalDate" name="arrivalDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="departureDate">Vertrekdatum:</label>
+                    <input type="text" id="departureDate" name="departureDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="comments">Opmerkingen:</label>
+                    <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
+                </div>
+                <button type="submit">Bevestigen</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

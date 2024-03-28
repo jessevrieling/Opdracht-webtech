@@ -81,5 +81,9 @@ def huisjes():
 def wachtwoord():
     return render_template("wachtwoord.html")
 
+@app.route("/boeking")
+def boeking():
+    return render_template("boekscherm.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
