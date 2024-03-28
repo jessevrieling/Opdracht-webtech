@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="static/stylesheets/login.css">
         <title>Bungalowpark Zee en Duin|Inloggen</title>
     </head>
-    
     <body>
         <div class="navigationBar">
             <div class="navigationLeft">
@@ -45,12 +44,7 @@
                 <input type="text" name="identifier" placeholder="Gebruikersnaam of e-mail">
                 <input type="password" name="password" placeholder="Wachtwoord">
                 <input type="submit" value="Inloggen">
-                <a href="/wachtwoord_vergeten">
-                    <p>Wachtwoord vergeten?</p>
-                </a>
-                <a href="/registreren">
-                    <p>Nog geen account?</p>
-                </a>
+                <p id="errorText">{{errorCode}}</p>
             </form>
         </div>
     </body>
