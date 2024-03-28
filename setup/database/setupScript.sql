@@ -1,0 +1,22 @@
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email TEXT UNIQUE NOT NULL,
+    name TEXT NOT NULL,
+    password TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS houses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    capacity INTEGER NOT NULL,
+    price INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS reservations (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    userId INTEGER,
+    houseId INTEGER,
+    FOREIGN KEY(userId) REFERENCES users(id),
+    FOREIGN KEY(houseId) REFERENCES houses(id)
+);
