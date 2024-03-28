@@ -42,7 +42,7 @@ def inloggen():
                 session["loggedIn"] = True
                 session["username"] = username
                 con.close()
-                return redirect("/mijnboekingen")
+                return redirect("/")
             else:
                 return render_template("login.html", errorCode="Onjuist wachtwoord of e-mail")
         
@@ -102,10 +102,9 @@ def wachtwoord():
 def boeking():
     if request.method == "GET":
         if session.get("loggedIn") == True:
-            return redirect("/mijnboekingen")
+            return render_template("boekscherm.html")
         else:
-            return render_template("login.html", errorCode="")
-    return render_template("boekscherm.html")
+            return redirect("/inloggen")
 
 if __name__ == "__main__":
     app.run(debug=True)

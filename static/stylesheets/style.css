@@ -103,7 +103,7 @@ a {
     cursor: pointer;
 }
 
-#bookingButton>a {
+#bookingButton {
     color: white;
 }
 
