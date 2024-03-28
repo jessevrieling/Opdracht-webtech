@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 import sqlite3
 import bcrypt
 
@@ -83,6 +83,11 @@ def wachtwoord():
 
 @app.route("/boeking")
 def boeking():
+    if request.method == "GET":
+        if session.get("loggedIn") == True:
+            return redirect("/mijnboekingen")
+        else:
+            return render_template("login.html", errorCode="")
     return render_template("boekscherm.html")
 
 if __name__ == "__main__":
