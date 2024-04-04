@@ -117,3 +117,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #b5836c;
 }
+
+form>p {
+    text-align: center;
+}
