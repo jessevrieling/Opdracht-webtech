@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8">
@@ -7,60 +6,67 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/stylesheets/boekscherm.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/main.min.css" rel="stylesheet">
     <title>Bungalowpark Zee en Duin|Mijn boekingen</title>
-
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> <!-- jQuery UI CSS -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> <!-- jQuery UI -->
-  <script>
-    
-    $(function() {
-        let startDate;
-        let endDate;
-
-        $("#arrivalDate, #departureDate").datepicker({
-            dateFormat: 'dd/mm/yy',
-            onSelect: function(date) {
-            if ($(this).attr("id") === "arrivalDate") {
-                startDate = new Date(date);
-            } else {
-                endDate = new Date(date);
-
-                $('.ui-datepicker-calendar td').each(function() {
-                const currentDate = new Date(parseInt($(this).attr('data-year')), parseInt($(this).attr('data-month')) + 1, parseInt($(this).text()));
-                if (currentDate >= startDate && currentDate <= endDate) {
-                    $(this).addClass('selected-range');
-                } else {
-                    $(this).removeClass('selected-range');
-                }
-                });
-            }}
-        });
-    });
-  </script>
-  
 </head>
+
 <body>
 
-    <div class="container">
-        <div class="booking-form">
-            <h2>Boek Nu</h2>
-            <form action="submit_booking.php" method="POST"> <!-- Actie en methode moeten worden aangepast aan jouw backend -->
-                <div class="form-group">
-                    <label for="arrivalDate">Aankomstdatum:</label>
-                    <input type="text" id="arrivalDate" name="arrivalDate" required>
-                </div>
-                <div class="form-group">
-                    <label for="departureDate">Vertrekdatum:</label>
-                    <input type="text" id="departureDate" name="departureDate" required>
-                </div>
-                <div class="form-group">
-                    <label for="comments">Opmerkingen:</label>
-                    <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
-                </div>
-                <button type="submit">Bevestigen</button>
-            </form>
-        </div>
+<div class="container">
+  <div class="booking-form">
+    <h1>Reservering</h1>
+    <label for="arrival-date">Aankomstdatum:</label>
+    <input type="date" id="arrival-date" required>
+    
+    <label for="departure-date">Vertrekdatum:</label>
+    <input type="date" id="departure-date" required>
+    
+    <!-- Label voor de lengte van het verblijf -->
+    <div class="stay-length">
+      <label>Lengte van het verblijf:</label>
+      <span id="stay-length">-</span>
     </div>
+    
+    <!-- Opmerkingen -->
+    <label for="comments">Opmerkingen:</label>
+    <textarea id="comments" rows="4" cols="50"></textarea>
+    
+    <div id="error-message" style="color: red;"></div>
+    
+    <button type="submit" id="submit-button">Reserveren</button>
+  </div>
+</div>
+
+<div class="navigationBar">
+    <div class="navigationLeft">
+        <a href="/">
+            <h2>Park zee en duin</h2>
+        </a>
+        <img src="../static/images/logo.png" width="12.5%" height="12.5%">
+    </div>
+    <div class="navigationMiddle">
+        <a href="/huisjes" class="navigationElement">
+            <p>Huisjes</p>
+        </a>
+        <a href="/contact" class="navigationElement">
+            <p>Contact</p>
+        </a>
+        <a href="mijnboekingen" class="navigationElement">
+            <p>Mijn boekingen</p>
+        </a>
+    </div>
+    <div class="navigationRight">
+        <a href="/registreren" class="navigationElement">
+            <p>Registreren</p>
+        </a>
+        <a href="/inloggen" class="navigationElement">
+            <p>Inloggen</p>
+        </a>
+    </div>
+</div>
+
+<script src="static/scripts/calender.js">
+</script>
 </body>
 </html>
