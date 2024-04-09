@@ -5,11 +5,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Stel minimum aankomstdatum in op vandaag
     const today = new Date();
+    today.setDate(today.getDate() + 1);
     arrivalDateInput.min = today.toISOString().split('T')[0];
 
-    // Stel minimum vertrekdatum in op morgen
+    // Stel minimum vertrekdatum in op overmorgen
     const tomorrow = new Date(today);
-    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setDate(tomorrow.getDate() + 2);
     departureDateInput.min = tomorrow.toISOString().split('T')[0];
 
     // Luister naar veranderingen in de aankomstdatum
@@ -48,9 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
             stayLengthSpan.textContent = "-";
         }
 
-        // Blokkeer de aankomstdatum bij vertrekdatum
-        if (departureDate) {
-            arrivalDateInput.max = departureDateInput.value;
-        }
+
     }
 });
