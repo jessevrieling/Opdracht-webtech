@@ -90,9 +90,20 @@ def boekingen():
 def contact():
     return render_template("contact.html")
 
-@app.route("/huisjes")
+@app.route("/huisjes", methods=["GET"])
 def huisjes():
-    return render_template("huisjes.html")
+    con = sqlite3.connect("database.db")
+    cursor = con.cursor()
+    query = "SELECT image_url, title, description, capacity, price FROM houses"
+    cursor.execute(query)
+
+    result = cursor.fetchall()
+    houses = list()
+
+    for row in result:
+        houses.append(row)
+
+    return render_template("huisjes.html", houses=houses)
 
 @app.route("/wachtwoord_vergeten")
 def wachtwoord():
