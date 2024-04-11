@@ -97,7 +97,7 @@ def contact():
 def huisjes():
     con = sqlite3.connect("database.db")
     cursor = con.cursor()
-    query = "SELECT image_url, title, description, capacity, price FROM houses"
+    query = "SELECT image_url, title, description, capacity, price, id FROM houses"
     cursor.execute(query)
 
     result = cursor.fetchall()
