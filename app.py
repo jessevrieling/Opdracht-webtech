@@ -82,9 +82,12 @@ def aangemeld():
     elif request.method == "POST":
         return redirect("/")
 
-@app.route("/mijnboekingen")
+@app.route("/mijnboekingen", methods=["GET"])
 def boekingen():
-    return render_template("boeken.html")
+    if session.get("loggedIn") == True:
+        return render_template("boeken.html")
+    else:
+        return redirect("/inloggen")
 
 @app.route("/contact")
 def contact():
