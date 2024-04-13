@@ -10,35 +10,7 @@
     <title>Bungalowpark Zee en Duin|Mijn boekingen</title>
 </head>
 <body>
-    <body>
-        <div class="navigationBar">
-            <div class="navigationLeft">
-                <a href="/">
-                    <h2>Park zee en duin</h2>
-                </a>
-                <img src="../static/images/logo.png" width="12.5%" height="12.5%">
-            </div>
-            <div class="navigationMiddle">
-                <a href="/huisjes" class="navigationElement">
-                    <p>Huisjes</p>
-                </a>
-                <a href="/contact" class="navigationElement">
-                    <p>Contact</p>
-                </a>
-                <a href="mijnboekingen" class="navigationElement">
-                    <p>Mijn boekingen</p>
-                </a>
-            </div>
-            <div class="navigationRight">
-                <a href="/registreren" class="navigationElement">
-                    <p>Registreren</p>
-                </a>
-                <a href="/inloggen" class="navigationElement">
-                    <p>Inloggen</p>
-                </a>
-            </div>
-        </div>
-
+    {% include 'navigation.html' %}
     <div class="container">
         <div class="booked-house-card">
             <img class="house-image" src="../static/images/house1.jpg" alt="Geboekt huisje 1">
