@@ -14,35 +14,17 @@
 <body>
     {% include 'navigation.html' %}
    
-    <div class="container">
-        <div class="house-card">
-            <img class="house-image" src="../static/images/house1.jpg" alt="Vakantiehuisje 1">
-            <div class="house-details">
-                <h2 class="house-title">Vakantiehuisje 1</h2>
-                <p class="house-price">€150/nacht</p>
-                <p class="house-description">Mooi vakantiehuisje met uitzicht op het meer. Geschikt voor 4 personen.</p>
-                <button class="book-now-button">Boek nu</button>
+        <div class="container">
+            {% for house in houses %}
+            <div class="house-card">
+                <img class="house-image" src="../static/images/houses/{{house[0]}}.jpg" alt="Vakantiehuisje 1">
+                <div class="house-details">
+                    <h2 class="house-title">{{house[1]}}</h2>
+                    <p class="house-price">€{{house[4]}},- per week</p>
+                    <p class="house-description">{{house[2]}} Geschikt voor {{house[3]}} personen.</p>
+                    <button class="book-now-button" onclick="window.location.href = '/boeking?id={{house[5]}}'">Boek nu</button>
+                </div>
             </div>
-        </div>
-        <div class="house-card">
-            <img class="house-image" src="../static/images/house2.jpg" alt="Vakantiehuisje 2">
-            <div class="house-details">
-                <h2 class="house-title">Vakantiehuisje 2</h2>
-                <p class="house-price">€200/nacht</p>
-                <p class="house-description">Gezellig huisje met privé tuin en jacuzzi. Geschikt voor 6 personen.</p>
-                <button class="book-now-button">Boek nu</button>
-            </div>
-        </div>
-        <div class="house-card">
-            <img class="house-image" src="../static/images/house3.jpeg" alt="Vakantiehuisje 3">
-            <div class="house-details">
-                <h2 class="house-title">Vakantiehuisje 3</h2>
-                <p class="house-price">€200/nacht</p>
-                <p class="house-description">Gezellig huisje met privé tuin en jacuzzi. Geschikt voor 6 personen.</p>
-                <button class="book-now-button">Boek nu</button>
-            </div>
-        </div>
-        <!-- Voeg hier meer vakantiehuisjes toe indien nodig -->
-    </div>
-</body>
+            {% endfor %}
+    </body>
 </html>
