@@ -119,6 +119,8 @@ def contact():
         email = request.form.get('email')
         message = request.form.get('message')
 
+        # Moet veranderd worden zodat het naar een fatsoenlijke email stuurt but you get the gist
+        # Is netter om de emails te lezen via een JSON voor aanpasbaarheid en security maar is te veel moeite je weet wel
         msg = EmailMessage()
         msg['Subject'] = f'Message from {name}'
         msg['From'] = 'parkzeeenduin@gmail.com'
