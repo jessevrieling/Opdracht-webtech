@@ -94,7 +94,7 @@ def aangemeld():
 @app.route("/cancel", methods=["POST"])
 def cancel():
     if request.method == "POST":
-        
+
         return boekingen()
 
 @app.route("/mijnboekingen", methods=["GET"])
@@ -146,6 +146,11 @@ def contact():
             server.quit()
         print('successfully sent the mail.')
     return render_template("index.html", loggedIn = session.get("loggedIn"))
+
+@app.route("/uitloggen", methods=["GET"])
+def uitloggen():
+    session.clear()
+    return render_template("uitloggen.html")
 
 @app.route("/huisjes", methods=["GET"])
 def huisjes():
