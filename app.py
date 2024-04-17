@@ -120,14 +120,17 @@ def contact():
         message = request.form.get('message')
 
         # Moet veranderd worden zodat het naar een fatsoenlijke email stuurt but you get the gist
-        # Is netter om de emails te lezen via een JSON voor aanpasbaarheid en security maar is te veel moeite je weet wel
+        # Is netter om de emails en wachtwoord te lezen via een JSON voor aanpasbaarheid en security maar is te veel moeite je weet wel
+        # Authentication is en blijft kut
         msg = EmailMessage()
         msg['Subject'] = f'Message from {name}'
         msg['From'] = 'parkzeeenduin@gmail.com'
-        msg['To'] = 'bob.bb.bobberton@gmail.com'
+        # msg['To'] = 'bob.bb.bobberton@gmail.com'
+        recipients = ['bob.bb.bobberton@gmail.com', 'jessevrieling@gmail.com', 'ruardijtom@gmail.com']
+        msg['To'] = ', '.join(recipients)
         msg.set_content(f'Name: {name}\nE-mail: {email}\n\nMessage: {message}')
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
-            server.login('parkzeeenduin@gmail.com', 'rlqq conv jlri jtag')
+            server.login('parkzeeenduin@gmail.com', 'radw mcuy mfsx xuxs')
             server.send_message(msg)
             server.quit()
         print('successfully sent the mail.')
