@@ -12,8 +12,10 @@
 </head>
 
 <body>
-
-{% include 'navigation.html' %}
+  {% set renderRight = not(loggedIn) %}
+  {% block navigation %}
+    {% include 'navigation.html' %}
+  {% endblock %}
 <div class="container">
   <div class="booking-form">
     <h1>Reservering</h1>

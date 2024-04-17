@@ -10,7 +10,10 @@
     <title>Bungalowpark Zee en Duin|Mijn boekingen</title>
 </head>
 <body>
-    {% include 'navigation.html' %}
+    {% set renderRight = not(loggedIn) %}
+    {% block navigation %}
+        {% include 'navigation.html' %}
+    {% endblock %}
     <div class="container">
         {% if reservations | length == 0 %}
             <h1>Geen reserveringen</h1>

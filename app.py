@@ -10,7 +10,7 @@ hasher = Bcrypt()
 
 @app.route("/", methods=["GET"])
 def index():
-    return render_template("index.html")
+    return render_template("index.html", loggedIn = session.get("loggedIn"))
 
 @app.route("/inloggen", methods=["GET", "POST"])
 def inloggen():
@@ -18,7 +18,7 @@ def inloggen():
         if session.get("loggedIn") == True:
             return redirect("/mijnboekingen")
         else:
-            return render_template("login.html", errorCode="")
+            return render_template("login.html", errorCode="", loggedIn = session.get("loggedIn"))
     elif request.method == "POST":
         con = sqlite3.connect("database.db")
         cursor = con.cursor()
@@ -31,7 +31,7 @@ def inloggen():
         result = cursor.fetchone()
 
         if result is None:
-            return render_template("login.html", errorCode="Onjuist wachtwoord of e-mail")
+            return render_template("login.html", errorCode="Onjuist wachtwoord of e-mail", loggedIn = session.get("loggedIn"))
         else:
             passwordHash = result[0]
 
@@ -51,7 +51,7 @@ def inloggen():
                 con.close()
                 return redirect("/")
             else:
-                return render_template("login.html", errorCode="Onjuist wachtwoord of e-mail")
+                return render_template("login.html", errorCode="Onjuist wachtwoord of e-mail", loggedIn = session.get("loggedIn"))
         
 @app.route("/registreren", methods=["GET", "POST"])
 def registreren():
@@ -85,7 +85,7 @@ def registreren():
 @app.route("/Gefeliciteerd!", methods=["GET", "POST"])
 def aangemeld():
     if request.method == "GET":
-        return render_template("aangemeld.html")
+        return render_template("aangemeld.html", loggedIn = session.get("loggedIn"))
     elif request.method == "POST":
         return redirect("/")
 
@@ -104,13 +104,13 @@ def boekingen():
             reservations.append(row)
 
         con.close()
-        return render_template("boeken.html", reservations=reservations)
+        return render_template("boeken.html", reservations=reservations, loggedIn = session.get("loggedIn"))
     else:
         return redirect("/inloggen")
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    return render_template("contact.html", loggedIn = session.get("loggedIn"))
 
 @app.route("/huisjes", methods=["GET"])
 def huisjes():
@@ -125,29 +125,19 @@ def huisjes():
     for row in result:
         houses.append(row)
 
-    return render_template("huisjes.html", houses=houses)
+    return render_template("huisjes.html", houses=houses, loggedIn = session.get("loggedIn"))
 
 @app.route("/wachtwoord_vergeten")
 def wachtwoord():
-    return render_template("wachtwoord.html")
+    return render_template("wachtwoord.html", loggedIn = session.get("loggedIn"))
 
 @app.route("/boeking")
 def boeking():
     if request.method == "GET":
         if session.get("loggedIn") == True:
-            return render_template("boekscherm.html")
+            return render_template("boekscherm.html", loggedIn = session.get("loggedIn"))
         else:
             return redirect("/inloggen")
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-soup = BeautifulSoup('./templates/navigation.html', 'html.parser')
-
-if session.get("logginIn"):
-    ignoreElements = soup.find_all(class_='navigationRight')
-    for el in ignoreElements:
-        el.extract()
-
-print(soup.prettify())
-
