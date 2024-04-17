@@ -90,6 +90,11 @@ def aangemeld():
         return render_template("aangemeld.html", loggedIn = session.get("loggedIn"))
     elif request.method == "POST":
         return redirect("/")
+    
+@app.route("/cancel", methods=["POST"])
+def cancel():
+    if request.method == "POST":
+        return boekingen()
 
 @app.route("/mijnboekingen", methods=["GET"])
 def boekingen():
