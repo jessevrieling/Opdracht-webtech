@@ -25,7 +25,14 @@
                     <h2 class="house-title">Geboekt huisje 1</h2>
                     <p class="booking-info">Aankomstdatum: 25-03-2024</p>
                     <p class="booking-info">Vertrekdatum: 01-04-2024</p>
-                    <button class="extend-booking-button">Verleng verblijf</button>
+
+                    <form action="/cancel" method="POST">
+                        <input class="buttons" type="submit" value="Annuleer boeking">
+                    </form>
+                    
+                    <form action="/boeken" method="POST">
+                        <input class="buttons" type="submit" value="Verleng verblijf">
+                    </form>
                 </div>
             {% endfor %}
         {% endif %}
