@@ -51,4 +51,44 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     }
+ document.getElementById("submit-button").addEventListener("click", function() {
+        // Haal de waarden van de invoervelden op
+        var arrivalDate = arrivalDateInput.value;
+        var departureDate = departureDateInput.value;
+        var userId = document.getElementById("user-id").value; // Als je de gebruikers-ID niet uit de URL krijgt
+        var houseId = houseIdInput.value; // Gebruik het huis-ID uit de URL
+        var comments = document.getElementById("comments").value;
+
+        // Maak een object met de reserveringsgegevens
+        var reservationData = {
+            arrival_date: arrivalDate,
+            departure_date: departureDate,
+            user_id: userId,
+            house_id: houseId,
+            comments: comments
+        };
+
+        // Maak een HTTP POST-verzoek naar de server om de reservering toe te voegen aan de database
+        fetch('/add_reservation', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(reservationData)
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+            // Toon een succesbericht of eventuele foutmeldingen
+            document.getElementById("error-message").textContent = data;
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            // Toon een foutmelding als er een probleem is met het maken van de reservering
+            document.getElementById("error-message").textContent = 'Er is een fout opgetreden bij het maken van de reservering.';
+        });
+    });
 });
+
+
+
