@@ -142,5 +142,12 @@ def boeking():
 if __name__ == "__main__":
     app.run(debug=True)
 
-soup = BeautifulSoup(html, 'html.parser')
+soup = BeautifulSoup('./templates/navigation.html', 'html.parser')
+
+if session.get("logginIn"):
+    ignoreElements = soup.find_all(class_='navigationRight')
+    for el in ignoreElements:
+        el.extract()
+
+print(soup.prettify())
 
