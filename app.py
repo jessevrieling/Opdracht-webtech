@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 from flask_bcrypt import Bcrypt
 import sqlite3
 from secrets import token_hex
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 app.secret_key = token_hex(16)
@@ -140,3 +141,6 @@ def boeking():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+soup = BeautifulSoup(html, 'html.parser')
+
