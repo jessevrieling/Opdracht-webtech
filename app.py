@@ -96,17 +96,22 @@ def boekingen():
     if session.get("loggedIn") == True:
         con = sqlite3.connect("database.db")
         cursor = con.cursor()
-        query = f"SELECT title, date_arrival, date_departure FROM reservations JOIN houses ON reservations.houseId = houses.id WHERE userId={session.get("userId")}"
+        query = f"SELECT title, date_arrival, date_departure, houseID FROM reservations JOIN houses ON reservations.houseId = houses.id WHERE userId={session.get("userId")}"
         cursor.execute(query)
-
         result = cursor.fetchall()
         reservations = list()
-
         for row in result:
             reservations.append(row)
 
+        query = f"SELECT * FROM houses"
+        cursor.execute(query)
+        result = cursor.fetchall()
+        houses = list()
+        for row in result:
+            houses.append(row)
+
         con.close()
-        return render_template("boeken.html", reservations=reservations, loggedIn = session.get("loggedIn"))
+        return render_template("boeken.html", reservations=reservations, houses=houses, loggedIn = session.get("loggedIn"))
     else:
         return redirect("/inloggen")
 

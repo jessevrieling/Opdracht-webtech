@@ -20,11 +20,11 @@
         {% else %}
             {% for reservation in reservations %}
                 <div class="booked-house-card">
-                    <img class="house-image" src="../static/images/house1.jpg" alt="Geboekt huisje 1">
+                    <img class="house-image" src="../static/images/houses/house{{reservation[3]}}.jpg" alt="Geboekt huisje 1">
                     <div class="house-details">
-                    <h2 class="house-title">Geboekt huisje 1</h2>
-                    <p class="booking-info">Aankomstdatum: 25-03-2024</p>
-                    <p class="booking-info">Vertrekdatum: 01-04-2024</p>
+                    <h2 class="house-title">{{houses[reservation[3] - 1][2]}}</h2>
+                    <p class="booking-info">Aankomstdatum: {{reservation[1]}}</p>
+                    <p class="booking-info">Vertrekdatum: {{reservation[2]}}</p>
 
                     <form action="/cancel" method="POST">
                         <input class="buttons" type="submit" value="Annuleer boeking">
@@ -34,6 +34,7 @@
                         <input class="buttons" type="submit" value="Verleng verblijf">
                     </form>
                 </div>
+            </div>
             {% endfor %}
         {% endif %}
     </div>
