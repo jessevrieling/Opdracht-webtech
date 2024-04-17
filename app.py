@@ -54,6 +54,11 @@ def inloggen():
                 return redirect("/")
             else:
                 return render_template("login.html", errorCode="Onjuist wachtwoord of e-mail", loggedIn = session.get("loggedIn"))
+
+@app.route("/uitloggen", methods=["GET"])
+def uitloggen():
+    session.clear()
+    return render_template("uitloggen.html")
         
 @app.route("/registreren", methods=["GET", "POST"])
 def registreren():
@@ -184,6 +189,6 @@ def boeking():
         cursor.execute(query)
         con.commit()
         con.close()
-        return redirect("/")
+        return redirect("/Gefeliciteerd!")
 if __name__ == "__main__":
     app.run(debug=True)
