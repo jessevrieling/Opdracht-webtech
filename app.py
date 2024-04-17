@@ -36,12 +36,18 @@ def inloggen():
             passwordHash = result[0]
 
             if hasher.check_password_hash(passwordHash, plainPassword):
-                query = f"SELECT name FROM users WHERE name=\"{identifier}\" OR email=\"{identifier}\""
+                query = f"SELECT name, id FROM users WHERE name=\"{identifier}\" OR email=\"{identifier}\""
                 cursor.execute(query)
-                username = cursor.fetchone()[0]
+                result = cursor.fetchall()
+
+                userId = result[0][1]
+                username = result[0][0]
 
                 session["loggedIn"] = True
                 session["username"] = username
+                session["userId"] = userId
+
+                print(session.get("userId"))
                 con.close()
                 return redirect("/")
             else:
@@ -86,7 +92,19 @@ def aangemeld():
 @app.route("/mijnboekingen", methods=["GET"])
 def boekingen():
     if session.get("loggedIn") == True:
-        return render_template("boeken.html")
+        con = sqlite3.connect("database.db")
+        cursor = con.cursor()
+        query = f"SELECT title, date_arrival, date_departure FROM reservations JOIN houses ON reservations.houseId = houses.id WHERE userId={session.get("userId")}"
+        cursor.execute(query)
+
+        result = cursor.fetchall()
+        reservations = list()
+
+        for row in result:
+            reservations.append(row)
+
+        con.close()
+        return render_template("boeken.html", reservations=reservations)
     else:
         return redirect("/inloggen")
 
@@ -113,13 +131,18 @@ def huisjes():
 def wachtwoord():
     return render_template("wachtwoord.html")
 
-@app.route("/boeking")
+@app.route("/boeking", methods=["GET", "POST"])
 def boeking():
     if request.method == "GET":
         if session.get("loggedIn") == True:
             return render_template("boekscherm.html")
         else:
             return redirect("/inloggen")
+    elif request.method == "POST":
+        arrival = request.form.get("arrival-date")
+        departure = request.form.get("departure-date")
+        password = request.form.get("password")
+        passwordConfirm = request.form.get("passwordConfirm")
 
 if __name__ == "__main__":
     app.run(debug=True)

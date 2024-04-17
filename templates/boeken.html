@@ -12,25 +12,20 @@
 <body>
     {% include 'navigation.html' %}
     <div class="container">
-        <div class="booked-house-card">
-            <img class="house-image" src="../static/images/house1.jpg" alt="Geboekt huisje 1">
-            <div class="house-details">
-                <h2 class="house-title">Geboekt huisje 1</h2>
-                <p class="booking-info">Aankomstdatum: 25-03-2024</p>
-                <p class="booking-info">Vertrekdatum: 01-04-2024</p>
-                <button class="extend-booking-button">Verleng verblijf</button>
-            </div>
-        </div>
-        <div class="booked-house-card">
-            <img class="house-image" src="../static/images/house2.jpg" alt="Geboekt huisje 2">
-            <div class="house-details">
-                <h2 class="house-title">Geboekt huisje 2</h2>
-                <p class="booking-info">Aankomstdatum: 30-03-2024</p>
-                <p class="booking-info">Vertrekdatum: 06-04-2024</p>
-                <button class="extend-booking-button">Verleng verblijf</button>
-            </div>
-        </div>
-        <!-- Voeg hier meer geboekte huisjes toe indien nodig -->
+        {% if reservations | length == 0 %}
+            <h1>Geen reserveringen</h1>
+        {% else %}
+            {% for reservation in reservations %}
+                <div class="booked-house-card">
+                    <img class="house-image" src="../static/images/house1.jpg" alt="Geboekt huisje 1">
+                    <div class="house-details">
+                    <h2 class="house-title">Geboekt huisje 1</h2>
+                    <p class="booking-info">Aankomstdatum: 25-03-2024</p>
+                    <p class="booking-info">Vertrekdatum: 01-04-2024</p>
+                    <button class="extend-booking-button">Verleng verblijf</button>
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
 </body>
 </html>
