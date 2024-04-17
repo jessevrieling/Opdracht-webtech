@@ -139,11 +139,20 @@ def boeking():
         else:
             return redirect("/inloggen")
     elif request.method == "POST":
+
         arrival = request.form.get("arrival-date")
         departure = request.form.get("departure-date")
-        password = request.form.get("password")
-        passwordConfirm = request.form.get("passwordConfirm")
+        uID = session.get("userId")
+        hID = request.args.get("id")
+        print(hID)
 
+        con = sqlite3.connect("database.db")
+        cursor = con.cursor()
+        query = f"INSERT INTO reservations (date_arrival, date_departure, userID, houseID) VALUES(\"{arrival}\", \"{departure}\", \"{uID}\", \"{hID}\")"
+        cursor.execute(query)
+        con.commit()
+        con.close()
+        return redirect("/")
 if __name__ == "__main__":
     app.run(debug=True)
 
