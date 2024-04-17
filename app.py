@@ -138,13 +138,11 @@ def boeking():
             return render_template("boekscherm.html")
         else:
             return redirect("/inloggen")
-    elif request.method == "POST":
-
+    if request.method == "POST":
         arrival = request.form.get("arrival-date")
         departure = request.form.get("departure-date")
         uID = session.get("userId")
-        hID = request.args.get("id")
-        print(hID)
+        hID = request.form.get("id")
 
         con = sqlite3.connect("database.db")
         cursor = con.cursor()
