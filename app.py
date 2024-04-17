@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 from flask_bcrypt import Bcrypt
 import sqlite3
 from secrets import token_hex
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 app.secret_key = token_hex(16)
@@ -130,13 +131,21 @@ def huisjes():
 def wachtwoord():
     return render_template("wachtwoord.html")
 
-@app.route("/boeking")
+@app.route("/boeking", methods=["GET", "POST"])
 def boeking():
     if request.method == "GET":
         if session.get("loggedIn") == True:
             return render_template("boekscherm.html")
         else:
             return redirect("/inloggen")
+    elif request.method == "POST":
+        arrival = request.form.get("arrival-date")
+        departure = request.form.get("departure-date")
+        password = request.form.get("password")
+        passwordConfirm = request.form.get("passwordConfirm")
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+soup = BeautifulSoup(html, 'html.parser')
+
