@@ -19,11 +19,11 @@
         
         <div class="container">
             
-            <form class="contact-form" action="mailto:your-email@example.com" method="post" enctype="text/plain">
+            <form class="contact-form" method="post" enctype="multipart/form-data">
                 <h1>Contact formulier</h1>
-                <input type="text" name="name" placeholder="Naam" required>
-                <input type="text" name="email" placeholder="E-mail" required>
-                <textarea name="message" placeholder="Uw bericht." required></textarea>
+                <input id="name" type="text" name="name" placeholder="Naam" value="{{ default_name }}" required>
+                <input id="email" type="text" name="email" placeholder="E-mail" value="{{ default_email }}" required>
+                <textarea id="message" name="message" placeholder="Uw bericht." required>{{ default_message }}</textarea>
                 <input type="submit" value="Versturen">
             </form>
         </div>

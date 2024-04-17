@@ -3,6 +3,8 @@ from flask_bcrypt import Bcrypt
 import sqlite3
 from secrets import token_hex
 from bs4 import BeautifulSoup
+from email.message import EmailMessage
+import smtplib
 
 app = Flask(__name__)
 app.secret_key = token_hex(16)
@@ -108,9 +110,26 @@ def boekingen():
     else:
         return redirect("/inloggen")
 
-@app.route("/contact")
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
-    return render_template("contact.html", loggedIn = session.get("loggedIn"))
+    if request.method == "GET":
+        return render_template("contact.html", loggedIn = session.get("loggedIn"))
+    elif request.method == "POST":
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+
+        msg = EmailMessage()
+        msg['Subject'] = f'Message from {name}'
+        msg['From'] = 'parkzeeenduin@gmail.com'
+        msg['To'] = 'bob.bb.bobberton@gmail.com'
+        msg.set_content(f'Name: {name}\nE-mail: {email}\n\nMessage: {message}')
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+            server.login('parkzeeenduin@gmail.com', 'rlqq conv jlri jtag')
+            server.send_message(msg)
+            server.quit()
+        print('successfully sent the mail.')
+    return render_template("index.html", loggedIn = session.get("loggedIn"))
 
 @app.route("/huisjes", methods=["GET"])
 def huisjes():
