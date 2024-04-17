@@ -20,7 +20,7 @@
         {% else %}
             {% for reservation in reservations %}
                 <div class="booked-house-card">
-                    <img class="house-image" src="../static/images/houses/house{{reservation[3]}}.jpg" alt="Geboekt huisje 1">
+                    <img class="house-image" src="../static/images/houses/{{houses[reservation[3] - 1][1]}}.jpg" alt="Geboekt huisje 1">
                     <div class="house-details">
                     <h2 class="house-title">{{houses[reservation[3] - 1][2]}}</h2>
                     <p class="booking-info">Aankomstdatum: {{reservation[1]}}</p>
