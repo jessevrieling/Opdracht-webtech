@@ -23,9 +23,9 @@
                 <img class="house-image" src="../static/images/houses/{{house[0]}}.jpg" alt="Vakantiehuisje 1">
                 <div class="house-details">
                     <h2 class="house-title">{{house[1]}}</h2>
-                    <p class="house-price">€{{house[4]}},- per week</p>
+                    <p class="house-price">€{{house[4]}},- per dag</p>
                     <p class="house-description">{{house[2]}} Geschikt voor {{house[3]}} personen.</p>
-                    <button class="book-now-button" onclick="window.location.href = '/boeking?id={{house[5]}}'">Boek nu</button>
+                    <button class="book-now-button" onclick="window.location.href = '/boeking?id={{house[5]}}!{{house[4]}}&'">Boek nu</button>
                 </div>
             </div>
             {% endfor %}
