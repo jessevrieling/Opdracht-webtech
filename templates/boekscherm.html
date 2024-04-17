@@ -18,26 +18,28 @@
   {% endblock %}
 <div class="container">
   <div class="booking-form">
-    <h1>Reservering</h1>
-    <label for="arrival-date">Aankomstdatum:</label>
-    <input type="date" id="arrival-date" required>
+    <form action="/boeking" method="POST">
+      <h1>Reservering</h1>
+      <label for="arrival-date">Aankomstdatum:</label>
+      <input type="date" id="arrival-date" name="arrival-date" required>
     
-    <label for="departure-date">Vertrekdatum:</label>
-    <input type="date" id="departure-date" required>
+      <label for="departure-date">Vertrekdatum:</label>
+      <input type="date" id="departure-date" name="departure-date" required>
     
-    <!-- Label voor de lengte van het verblijf -->
-    <div class="stay-length">
+      <!-- Label voor de lengte van het verblijf -->
+      <div class="stay-length">
       <label>Lengte van het verblijf:</label>
       <span id="stay-length">-</span>
-    </div>
+      </div>
     
-    <!-- Opmerkingen -->
-    <label for="comments">Opmerkingen:</label>
-    <textarea id="comments" rows="4" cols="50"></textarea>
+      <!-- Opmerkingen -->
+      <label for="comments">Opmerkingen:</label>
+      <textarea id="comments" rows="4" cols="50"></textarea>
     
-    <div id="error-message" style="color: red;"></div>
+      <div id="error-message" style="color: red;"></div>
     
-    <button type="submit" id="submit-button">Reserveren</button>
+      <button type="submit" id="submit-button">Reserveren</button>
+    </form>
   </div>
 </div>
 

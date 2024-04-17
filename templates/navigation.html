@@ -21,15 +21,15 @@
                 <p>Mijn boekingen</p>
             </a>
         </div>
-        {% if renderRight == True %}
         <div class="navigationRight">
+            {% if renderRight == True %}
             <a href="/registreren" class="navigationElement">
                 <p>Registreren</p>
             </a>
             <a href="/inloggen" class="navigationElement">
                 <p>Inloggen</p>
             </a>
+            {% endif %}
         </div>
-        {% endif %}
     </div>
 </body>

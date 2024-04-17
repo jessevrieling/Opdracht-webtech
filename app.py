@@ -150,13 +150,27 @@ def huisjes():
 def wachtwoord():
     return render_template("wachtwoord.html", loggedIn = session.get("loggedIn"))
 
-@app.route("/boeking")
+@app.route("/boeking", methods=["GET", "POST"])
 def boeking():
     if request.method == "GET":
         if session.get("loggedIn") == True:
             return render_template("boekscherm.html", loggedIn = session.get("loggedIn"))
         else:
             return redirect("/inloggen")
+    elif request.method == "POST":
 
+        arrival = request.form.get("arrival-date")
+        departure = request.form.get("departure-date")
+        uID = session.get("userId")
+        hID = request.args.get("id")
+        print(hID)
+
+        con = sqlite3.connect("database.db")
+        cursor = con.cursor()
+        query = f"INSERT INTO reservations (date_arrival, date_departure, userID, houseID) VALUES(\"{arrival}\", \"{departure}\", \"{uID}\", \"{hID}\")"
+        cursor.execute(query)
+        con.commit()
+        con.close()
+        return redirect("/")
 if __name__ == "__main__":
     app.run(debug=True)
