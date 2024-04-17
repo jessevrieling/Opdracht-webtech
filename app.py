@@ -54,11 +54,6 @@ def inloggen():
                 return redirect("/")
             else:
                 return render_template("login.html", errorCode="Onjuist wachtwoord of e-mail", loggedIn = session.get("loggedIn"))
-
-@app.route("/uitloggen", methods=["GET"])
-def uitloggen():
-    session.clear()
-    return render_template("uitloggen.html")
         
 @app.route("/registreren", methods=["GET", "POST"])
 def registreren():
@@ -99,6 +94,7 @@ def aangemeld():
 @app.route("/cancel", methods=["POST"])
 def cancel():
     if request.method == "POST":
+        
         return boekingen()
 
 @app.route("/mijnboekingen", methods=["GET"])
@@ -189,6 +185,6 @@ def boeking():
         cursor.execute(query)
         con.commit()
         con.close()
-        return redirect("/Gefeliciteerd!")
+        return redirect("/")
 if __name__ == "__main__":
     app.run(debug=True)

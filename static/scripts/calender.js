@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const arrivalDateInput = document.getElementById("arrival-date");
     const departureDateInput = document.getElementById("departure-date");
     const stayLengthSpan = document.getElementById("stay-length");
-
     // Stel minimum aankomstdatum in op vandaag
     const today = new Date();
     today.setDate(today.getDate() + 1);
@@ -19,8 +18,30 @@ document.addEventListener("DOMContentLoaded", function() {
     // Luister naar veranderingen in de vertrekdatum
     departureDateInput.addEventListener("change", updateStayLength);
 
+    // const dbPath = '.../database.db';
+    // const hID = document.getElementById("id-field");
+    // let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE);
+    // var dates = new Array();
+    // window.alert(toString(dates[0]));
+
+    // const query = `SELECT date_arrival, date_departure FROM reservations where houseId = ${hID}`;
+    // db.all(query, [], (rows) => {
+
+    //     rows.forEach((row) => {
+    //         dates.push(row)
+    //         window.alert(row);
+    //     });
+    
+    //     db.close();
+    // });
+
+    // for (var i = 0; i < dates.length; i++){
+    //     window.alert(dates[i])
+    // }
+
     // Functie om de lengte van het verblijf bij te werken
     function updateStayLength() {
+
         const arrivalDate = new Date(arrivalDateInput.value);
         const departureDate = new Date(departureDateInput.value);
 
@@ -89,6 +110,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-
-
-
