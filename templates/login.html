@@ -11,7 +11,10 @@
         <title>Bungalowpark Zee en Duin|Inloggen</title>
     </head>
     <body>
-        {% include 'navigation.html' %}
+        {% set renderRight = not(loggedIn) %}
+        {% block navigation %}
+            {% include 'navigation.html' %}
+        {% endblock %}
         
         <div class="loginFormContainer">
             <form action="/inloggen" method="POST">

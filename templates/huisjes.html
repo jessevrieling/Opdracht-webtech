@@ -12,7 +12,10 @@
     </head>
 
 <body>
-    {% include 'navigation.html' %}
+    {% set renderRight = not(loggedIn) %}
+    {% block navigation %}
+        {% include 'navigation.html' %}
+    {% endblock %}
    
         <div class="container">
             {% for house in houses %}
