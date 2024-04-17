@@ -131,13 +131,18 @@ def huisjes():
 def wachtwoord():
     return render_template("wachtwoord.html", loggedIn = session.get("loggedIn"))
 
-@app.route("/boeking")
+@app.route("/boeking", methods=["GET", "POST"])
 def boeking():
     if request.method == "GET":
         if session.get("loggedIn") == True:
             return render_template("boekscherm.html", loggedIn = session.get("loggedIn"))
         else:
             return redirect("/inloggen")
+    elif request.method == "POST":
+        arrival = request.form.get("arrival-date")
+        departure = request.form.get("departure-date")
+        password = request.form.get("password")
+        passwordConfirm = request.form.get("passwordConfirm")
 
 if __name__ == "__main__":
     app.run(debug=True)
