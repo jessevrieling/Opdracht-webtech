@@ -182,10 +182,10 @@ def boeking():
         departure = request.form.get("departure-date")
         uID = session.get("userId")
         hID = request.form.get("id")
-
+        comments = request.form.get("comments")
         con = sqlite3.connect("database.db")
         cursor = con.cursor()
-        query = f"INSERT INTO reservations (date_arrival, date_departure, userID, houseID) VALUES(\"{arrival}\", \"{departure}\", \"{uID}\", \"{hID}\")"
+        query = f"INSERT INTO reservations (date_arrival, date_departure, userID, houseID, text) VALUES(\"{arrival}\", \"{departure}\", \"{uID}\", \"{hID}\",\"{comments}\")"
         cursor.execute(query)
         con.commit()
         con.close()

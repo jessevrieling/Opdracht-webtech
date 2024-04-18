@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS reservations (
     date_departure DATE NOT NULL,
     userId INTEGER,
     houseId INTEGER,
+    tekst TEXT,
     FOREIGN KEY(userId) REFERENCES users(id),
     FOREIGN KEY(houseId) REFERENCES houses(id)
 );
