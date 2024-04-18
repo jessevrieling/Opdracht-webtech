@@ -16,6 +16,7 @@ a {
     color: #636363;
 }
 
+
 .container {
     height: calc(100vh - 5em);
     display: flex;
@@ -63,6 +64,10 @@ a {
     margin-right: 10px;
   }
 
+  .stay-length {
+    margin-top: 20px;
+  }
+
   .total-price {
     background-color: #c99780;
     color: #fff;
@@ -92,3 +97,12 @@ a {
   button[type="submit"]:hover {
     background-color: #b5836c;
   }
+
+#departure-date, #arrival-date{
+  padding: 8px;
+  border: 5px;
+  background-color: #ffd5c2;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: black;
+} 
