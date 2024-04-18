@@ -5,12 +5,12 @@ document.addEventListener("DOMContentLoaded", function() {
     // Stel minimum aankomstdatum in op vandaag
     const today = new Date();
     today.setDate(today.getDate() + 1);
-    arrivalDateInput.min = today.toISOString().split('T')[0];
+    //arrivalDateInput.min = today.toISOString().split('T')[0];
 
     // Stel minimum vertrekdatum in op overmorgen
     const tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 2);
-    departureDateInput.min = tomorrow.toISOString().split('T')[0];
+    //departureDateInput.min = tomorrow.toISOString().split('T')[0];
 
     // Luister naar veranderingen in de aankomstdatum
     arrivalDateInput.addEventListener("change", updateStayLength);
@@ -18,26 +18,24 @@ document.addEventListener("DOMContentLoaded", function() {
     // Luister naar veranderingen in de vertrekdatum
     departureDateInput.addEventListener("change", updateStayLength);
 
-    // const dbPath = '.../database.db';
-    // const hID = document.getElementById("id-field");
-    // let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE);
-    // var dates = new Array();
-    // window.alert(toString(dates[0]));
-
-    // const query = `SELECT date_arrival, date_departure FROM reservations where houseId = ${hID}`;
-    // db.all(query, [], (rows) => {
-
-    //     rows.forEach((row) => {
-    //         dates.push(row)
-    //         window.alert(row);
-    //     });
-    
-    //     db.close();
-    // });
-
-    // for (var i = 0; i < dates.length; i++){
-    //     window.alert(dates[i])
-    // }
+    fetch('/disable_dates?hID=' + document.getElementById("id-field").value)
+    .then(response => response.json())
+        .then(data => {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const dayAfter = new Date();
+            dayAfter.setDate(dayAfter.getDate() + 2);
+            const disabledDates = data.map(dateStr => new Date(dateStr));
+            flatpickr('#arrival-date', {
+                minDate: tomorrow,
+                disable: disabledDates // Disable specific dates
+            });
+            flatpickr('#departure-date', {
+                minDate: dayAfter,
+                disable: disabledDates // Disable specific dates
+            });
+        })
+        .catch(error => window.alert('Error fetching disabled dates:', error));
 
     // Functie om de lengte van het verblijf bij te werken
     function updateStayLength() {

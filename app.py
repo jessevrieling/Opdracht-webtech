@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, jsonify
 from flask_bcrypt import Bcrypt
 import sqlite3
 from secrets import token_hex
 from bs4 import BeautifulSoup
 from email.message import EmailMessage
 import smtplib
+from datetime import timedelta, datetime
 
 app = Flask(__name__)
 app.secret_key = token_hex(16)
@@ -83,6 +84,23 @@ def registreren():
                 return render_template("registreren.html", errorCode="E-mail al in gebruik")
         else:
             return render_template("registreren.html", errorCode="Wachtwoord komt niet overeen")
+
+@app.route('/disable_dates', methods=["GET"])
+def get_disabled_dates():
+    disabled_dates = list()
+    if session.get("loggedIn"):
+        hID = request.args.get('hID', type=int)
+        con = sqlite3.connect("database.db")
+        cursor = con.cursor()
+        query = f"SELECT date_arrival, date_departure FROM reservations WHERE houseId = {hID}"
+        cursor.execute(query)
+        result = cursor.fetchall()
+        for row in result:
+            disabled_dates.extend(getDateRange(datetime.strptime(row[0], "%Y-%m-%d"), datetime.strptime(row[1], "%Y-%m-%d")))
+        for d in disabled_dates:
+            print(d)
+        con.close()
+    return jsonify(disabled_dates)
 
 @app.route("/Gefeliciteerd!", methods=["GET", "POST"])
 def aangemeld():
@@ -191,5 +209,14 @@ def boeking():
         con.commit()
         con.close()
         return redirect("/")
+    
+def getDateRange(start_date, end_date):
+    dates = []
+    current_date = start_date
+    while current_date <= end_date:
+        dates.append(current_date)
+        current_date += timedelta(days=1)
+    return dates
+
 if __name__ == "__main__":
     app.run(debug=True)
