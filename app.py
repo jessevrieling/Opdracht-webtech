@@ -97,8 +97,6 @@ def get_disabled_dates():
         result = cursor.fetchall()
         for row in result:
             disabled_dates.extend(getDateRange(datetime.strptime(row[0], "%Y-%m-%d"), datetime.strptime(row[1], "%Y-%m-%d")))
-        for d in disabled_dates:
-            print(d)
         con.close()
     return jsonify(disabled_dates)
 

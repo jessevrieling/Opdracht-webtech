@@ -1,88 +1,90 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const arrivalDateInput = document.getElementById("arrival-date");
-    const departureDateInput = document.getElementById("departure-date");
+document.addEventListener("DOMContentLoaded", function () {
     const stayLengthSpan = document.getElementById("stay-length");
-    // Stel minimum aankomstdatum in op vandaag
     const today = new Date();
-    today.setDate(today.getDate() + 1);
-    //arrivalDateInput.min = today.toISOString().split('T')[0];
-
-    // Stel minimum vertrekdatum in op overmorgen
-    const tomorrow = new Date(today);
-    tomorrow.setDate(tomorrow.getDate() + 2);
-    //departureDateInput.min = tomorrow.toISOString().split('T')[0];
-
-    // Luister naar veranderingen in de aankomstdatum
-    arrivalDateInput.addEventListener("change", updateStayLength);
-
-    // Luister naar veranderingen in de vertrekdatum
-    departureDateInput.addEventListener("change", updateStayLength);
+    today.setDate(today.getDate());
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    let disabledDates;
+    const arrivalDateInput = flatpickr('#arrival-date', {
+        minDate: today,
+        onChange: updateStayLength
+    });
+    const departureDateInput = flatpickr('#departure-date', {
+        minDate: tomorrow,
+        onChange: updateStayLength
+    });
 
     fetch('/disable_dates?hID=' + document.getElementById("id-field").value)
-    .then(response => response.json())
+        .then(response => response.json())
         .then(data => {
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            const dayAfter = new Date();
-            dayAfter.setDate(dayAfter.getDate() + 2);
-            const disabledDates = data.map(dateStr => new Date(dateStr));
-            flatpickr('#arrival-date', {
-                minDate: tomorrow,
-                disable: disabledDates // Disable specific dates
-            });
-            flatpickr('#departure-date', {
-                minDate: dayAfter,
-                disable: disabledDates // Disable specific dates
-            });
+            disabledDates = data.map(dateStr => new Date(dateStr));
+            // flatpickr('#arrival-date', {
+            //     minDate: tomorrow,
+            //     disable: disabledDates // Disable specific dates
+            // });
+            // flatpickr('#departure-date', {
+            //     minDate: dayAfter,
+            //     disable: disabledDates // Disable specific dates
+            // });
+            arrivalDateInput.set('disable', disabledDates); // Set disabled dates for arrival date picker
+            departureDateInput.set('disable', disabledDates); // Set disabled dates for departure date picker
         })
         .catch(error => window.alert('Error fetching disabled dates:', error));
 
-    // Functie om de lengte van het verblijf bij te werken
     function updateStayLength() {
+        window.alert("CHANGED");
 
-        const arrivalDate = new Date(arrivalDateInput.value);
-        const departureDate = new Date(departureDateInput.value);
+        const arrivalStr = arrivalDateInput.input.value;
+        const departureStr = departureDateInput.input.value;
 
-        // Update de 'min' attribuut van de vertrekdatum input om eerdere data te blokkeren
-        departureDateInput.min = arrivalDateInput.value;
-        
-        // Update de 'max' attribuut van de aankomstdatum input om latere data te blokkeren
-        arrivalDateInput.max = departureDateInput.value;
-        
-        // Stel minimum vertrekdatum in op minimaal een dag na aankomstdatum
-        const minDepartureDate = new Date(arrivalDate);
-        minDepartureDate.setDate(minDepartureDate.getDate() + 1);
-        departureDateInput.min = minDepartureDate.toISOString().slice(0, 10);
+        const arrival = new Date(arrivalStr);
+        const departure = new Date(departureStr);
 
-        // Stel maximum aankomstdatum in op maximaal een dag voor vertrekdatum
-        const maxArrivalDate = new Date(departureDate);
-        maxArrivalDate.setDate(maxArrivalDate.getDate() - 1);
-        arrivalDateInput.max = maxArrivalDate.toISOString().slice(0, 10);
+        arrivalDateInput.set('minDate', today);
+        departureDateInput.set('minDate', tomorrow);
 
-        // Voer alleen de berekening uit als beide datums zijn geselecteerd en de vertrekdatum niet eerder is dan de aankomstdatum
-        if (arrivalDate && departureDate && departureDate >= arrivalDate) {
-            const differenceInTime = departureDate.getTime() - arrivalDate.getTime();
-            const differenceInDays = differenceInTime / (1000 * 3600 * 24);
-            stayLengthSpan.textContent = differenceInDays + " dagen";
-             // Haal het getal voor de prijs per dag op uit het value attribuut
-            const pricePerDayElement = document.getElementById("price-per-day");
-            const pricePerDay = parseFloat(pricePerDayElement.value);
+        arrivalDateInput.set('disable', disabledDates);
+        departureDateInput.set('disable', disabledDates);
 
-            const totalPrice = differenceInDays * pricePerDay;
-            const totalPriceSpan = document.getElementById("total-price");
-            totalPriceSpan.textContent = "€" + totalPrice.toFixed(2);
-        } else {
-            stayLengthSpan.textContent = "-";
-            const totalPriceSpan = document.getElementById("total-price");
-            totalPriceSpan.textContent = "-";
+        window.alert("WORK");
+
+        const nextDay = new Date(arrival);
+        nextDay.setDate(nextDay.getDate() + 1);
+
+        if (arrival) {
+            departureDateInput.set('minDate', nextDay);
         }
 
-    
+        if (arrival && departure) {
+            if (departure <= arrival) {
+
+                departureDateInput.setDate(null);
+                departureDateInput.set('minDate', nextDay);
+
+                window.alert("Should reset departure")
+            }
+        }
+
+        // if (departureDate) {
+        //     const disabledDepartureDates = disabledDates.filter(date => date <= arrivalDate);
+        //     departureDateInput.set('disable', disabledDepartureDates);
+        // }
+        // else {
+        //     departureDateInput.set('minDate', tomorrow);
+        // }
+        // if (arrivalDate) {
+        //     const disabledArrivalDates = disabledDates.filter(date => date >= departureDate);
+        //     arrivalDateInput.set('disable', disabledArrivalDates);
+        // }
+        // else {
+        //     arrivalDateInput.set('minDate', today);
+        // }
     }
- document.getElementById("submit-button").addEventListener("click", function() {
+
+    document.getElementById("submit-button").addEventListener("click", function () {
         // Haal de waarden van de invoervelden op
-        var arrivalDate = arrivalDateInput.value;
-        var departureDate = departureDateInput.value;
+        var arrivalDate = arrivalDateInput.input.value;
+        var departureDate = departureDateInput.input.value;
         var userId = document.getElementById("user-id").value; // Als je de gebruikers-ID niet uit de URL krijgt
         var houseId = houseIdInput.value; // Gebruik het huis-ID uit de URL
         var comments = document.getElementById("comments").value;
@@ -104,16 +106,16 @@ document.addEventListener("DOMContentLoaded", function() {
             },
             body: JSON.stringify(reservationData)
         })
-        .then(response => response.text())
-        .then(data => {
-            console.log(data);
-            // Toon een succesbericht of eventuele foutmeldingen
-            document.getElementById("error-message").textContent = data;
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-            // Toon een foutmelding als er een probleem is met het maken van de reservering
-            document.getElementById("error-message").textContent = 'Er is een fout opgetreden bij het maken van de reservering.';
-        });
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                // Toon een succesbericht of eventuele foutmeldingen
+                document.getElementById("error-message").textContent = data;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                // Toon een foutmelding als er een probleem is met het maken van de reservering
+                document.getElementById("error-message").textContent = 'Er is een fout opgetreden bij het maken van de reservering.';
+            });
     });
 });
