@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const stayLengthSpan = document.getElementById("stay-length");
+    const totalPriceSpan = document.getElementById("total-price");
     const today = new Date();
     today.setDate(today.getDate());
     const tomorrow = new Date();
@@ -57,15 +58,31 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (arrival && departure) {
-            if (departure <= arrival) {
-
+            if (arrival >= departure) {
+                departure = null;
                 departureDateInput.setDate(null);
                 departureDateInput.set('minDate', nextDay);
+            }
+            if (!isNaN(arrival.getTime()) && !isNaN(departure.getTime())) {
+                const differenceInTime = departure.getTime() - arrival.getTime();
+                const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+                stayLengthSpan.textContent = differenceInDays + " dagen";
+                // Haal het getal voor de prijs per dag op uit het value attribuut
+                const pricePerDayElement = document.getElementById("price-per-day");
+                const pricePerDay = parseFloat(pricePerDayElement.value);
 
-                window.alert("Should reset departure")
+                const totalPrice = differenceInDays * pricePerDay;
+                totalPriceSpan.textContent = "€" + totalPrice.toFixed(2);
+            }
+            //Enige probleem is dat het nog niet refresht bij de eerste call van de function.
+            //Het bovenaan ook roepen fixt het niet.
+            else {
+                stayLengthSpan.textContent = "-";
+                totalPriceSpan.textContent = "-";
             }
         }
     }
+
 
     document.getElementById("submit-button").addEventListener("click", function () {
         // Haal de waarden van de invoervelden op
