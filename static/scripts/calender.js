@@ -64,11 +64,20 @@ document.addEventListener("DOMContentLoaded", function() {
             const differenceInTime = departureDate.getTime() - arrivalDate.getTime();
             const differenceInDays = differenceInTime / (1000 * 3600 * 24);
             stayLengthSpan.textContent = differenceInDays + " dagen";
+             // Haal het getal voor de prijs per dag op uit het value attribuut
+            const pricePerDayElement = document.getElementById("price-per-day");
+            const pricePerDay = parseFloat(pricePerDayElement.value);
+
+            const totalPrice = differenceInDays * pricePerDay;
+            const totalPriceSpan = document.getElementById("total-price");
+            totalPriceSpan.textContent = "€" + totalPrice.toFixed(2);
         } else {
             stayLengthSpan.textContent = "-";
+            const totalPriceSpan = document.getElementById("total-price");
+            totalPriceSpan.textContent = "-";
         }
 
-
+    
     }
  document.getElementById("submit-button").addEventListener("click", function() {
         // Haal de waarden van de invoervelden op

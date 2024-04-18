@@ -5,6 +5,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="static/stylesheets/boekscherm.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -39,10 +40,16 @@
       <label>Lengte van het verblijf:</label>
       <span id="stay-length">-</span>
       </div>
+
+      <input type="hidden" id="price-per-day" value="">
+      <div class="total-price">
+        <label for="total-price">Totale prijs:</label>
+        <span id="total-price">-</span>
+      </div>
     
       <!-- Opmerkingen -->
       <label for="comments">Opmerkingen:</label>
-      <textarea id="comments" rows="4" cols="50"></textarea>
+      <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
     
       <div id="error-message" style="color: red;"></div>
     
@@ -54,5 +61,7 @@
 
 <script src="static/scripts/calender.js"></script>
 <script src="static/scripts/id.js"></script>
+<script src="static/scripts/totaleprijs.js"></script>
+
 </body>
 </html>

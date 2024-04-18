@@ -62,6 +62,21 @@ a {
   .stay-length label {
     margin-right: 10px;
   }
+
+  .total-price {
+    background-color: #c99780;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    max-width: 250px;
+    border-radius: 3px;
+    padding: 8px;
+  }
+  
+  .total-price label {
+    margin-right: 10px;
+  }
   
   button[type="submit"] {
     width: 100%;
