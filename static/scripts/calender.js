@@ -18,14 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             disabledDates = data.map(dateStr => new Date(dateStr));
-            // flatpickr('#arrival-date', {
-            //     minDate: tomorrow,
-            //     disable: disabledDates // Disable specific dates
-            // });
-            // flatpickr('#departure-date', {
-            //     minDate: dayAfter,
-            //     disable: disabledDates // Disable specific dates
-            // });
             arrivalDateInput.set('disable', disabledDates); // Set disabled dates for arrival date picker
             departureDateInput.set('disable', disabledDates); // Set disabled dates for departure date picker
         })
@@ -53,6 +45,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (arrival) {
             departureDateInput.set('minDate', nextDay);
+
+            let lowestDate = new Date();
+            lowestDate.setFullYear(lowestDate.getFullYear() + 1);
+            disabledDates.forEach(date => {
+                if (date > arrival && date < lowestDate)
+                    lowestDate = date;
+            });
+            departureDateInput.set('maxDate', lowestDate);
+            window.alert(lowestDate);
         }
 
         if (arrival && departure) {
@@ -64,21 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.alert("Should reset departure")
             }
         }
-
-        // if (departureDate) {
-        //     const disabledDepartureDates = disabledDates.filter(date => date <= arrivalDate);
-        //     departureDateInput.set('disable', disabledDepartureDates);
-        // }
-        // else {
-        //     departureDateInput.set('minDate', tomorrow);
-        // }
-        // if (arrivalDate) {
-        //     const disabledArrivalDates = disabledDates.filter(date => date >= departureDate);
-        //     arrivalDateInput.set('disable', disabledArrivalDates);
-        // }
-        // else {
-        //     arrivalDateInput.set('minDate', today);
-        // }
     }
 
     document.getElementById("submit-button").addEventListener("click", function () {
