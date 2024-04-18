@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => window.alert('Error fetching disabled dates:', error));
 
     function updateStayLength() {
-        window.alert("CHANGED");
 
         const arrivalStr = arrivalDateInput.input.value;
         const departureStr = departureDateInput.input.value;
@@ -38,8 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         arrivalDateInput.set('disable', disabledDates);
         departureDateInput.set('disable', disabledDates);
-
-        window.alert("WORK");
 
         const nextDay = new Date(arrival);
         nextDay.setDate(nextDay.getDate() + 1);
@@ -54,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     lowestDate = date;
             });
             departureDateInput.set('maxDate', lowestDate);
-            window.alert(lowestDate);
         }
 
         if (arrival && departure) {
