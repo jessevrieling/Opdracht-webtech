@@ -206,7 +206,7 @@ def boeking():
         cursor.execute(query)
         con.commit()
         con.close()
-        return redirect("/")
+        return redirect("/Gefeliciteerd!")
     
 def getDateRange(start_date, end_date):
     dates = []
